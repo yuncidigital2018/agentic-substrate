@@ -1,0 +1,21 @@
+{
+  "name": "agentic-substrate",
+  "version": "0.2.0",
+  "description": "The foundational architecture of LLM-native software — includes nine installable Skills for discovering, extracting, and building AI Skills from your everyday work, plus six ready-to-use example Skills for meeting notes, document review, research, project tracking, accounting, and content creation.",
+  "author": {
+    "name": "Ahn Chen & Claude (Opus 4.6)"
+  },
+  "keywords": [
+    "skills",
+    "framework",
+    "architecture",
+    "llm",
+    "agentic",
+    "knowledge-work",
+    "workflow",
+    "productivity"
+  ],
+  "compatibility": {
+    "cursor": ">=0.40.0"
+  }
+}

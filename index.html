@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agentic Substrate — Interactive Architecture</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --text: #e8e8f0;
+    --text-dim: #8888a0;
+    --accent: #6366f1;
+    --accent-glow: rgba(99,102,241,0.3);
+    --l1: #f59e0b;
+    --l2: #10b981;
+    --l3: #6366f1;
+    --l4: #ec4899;
+    --l5: #06b6d4;
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .hero .cta {
+    display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    position: relative;
+  }
+  .hero .cta a {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .cta-primary { background: var(--accent); color: #fff; }
+  .cta-primary:hover { filter: brightness(1.15); transform: translateY(-1px); }
+  .cta-secondary { border: 1px solid var(--border); color: var(--text); }
+  .cta-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Section */
+  section { padding: 60px 0; }
+  section h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  section .section-sub {
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+    font-size: 0.95rem;
+  }
+
+  /* Five Layer Stack */
+  .layer-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .layer-card {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: stretch;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+  .layer-card:hover, .layer-card.active {
+    border-color: var(--layer-color);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--layer-color) 25%, transparent);
+    transform: scale(1.01);
+  }
+  .layer-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--layer-color);
+    background: color-mix(in srgb, var(--layer-color) 10%, var(--surface));
+  }
+  .layer-body {
+    padding: 16px 20px;
+    background: var(--surface);
+  }
+  .layer-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--layer-color);
+    margin-bottom: 2px;
+  }
+  .layer-body .layer-zh {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .layer-body .layer-metaphor {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .layer-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 20px;
+    background: var(--surface);
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+  .layer-card.active .layer-detail {
+    max-height: 300px;
+    padding: 0 20px 16px;
+  }
+
+  /* Product Grid */
+  .product-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .product-grid table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    min-width: 700px;
+  }
+  .product-grid th {
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+  }
+  .product-grid th:first-child { text-align: left; }
+  .product-grid td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .product-grid td:first-child {
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .product-grid tr:hover td { background: var(--surface2); }
+  .dot-full { font-size: 1.1rem; }
+  .dot-partial { font-size: 1.1rem; opacity: 0.5; }
+  .dot-none { font-size: 1.1rem; opacity: 0.15; }
+
+  /* Learning Path */
+  .path-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .path-timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 32px;
+    bottom: 32px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--l1), var(--l2), var(--l3), var(--l4));
+  }
+  .path-node {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: start;
+    padding: 16px 0;
+    cursor: pointer;
+  }
+  .path-dot {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--node-color);
+    margin: 4px auto 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  .path-node:hover .path-dot {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px var(--bg), 0 0 16px color-mix(in srgb, var(--node-color) 50%, transparent);
+  }
+  .path-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .path-content .path-zh {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .path-content .path-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  .path-content .path-who {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--node-color) 15%, transparent);
+    color: var(--node-color);
+  }
+
+  /* Composition */
+  .comp-demo {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--border);
+  }
+  .comp-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .comp-skill {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .comp-skill.highlight {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+    color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+  .comp-arrow {
+    color: var(--text-dim);
+    font-size: 1.2rem;
+  }
+  .comp-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 48px 16px 40px; }
+    section { padding: 40px 0; }
+    .layer-card { grid-template-columns: 40px 1fr; }
+    .product-grid { margin: 0 -24px; padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState } = React;
+
+// ─── Data ───
+
+const layers = [
+  {
+    num: 5, name: "Interface", zh: "介面層",
+    color: "var(--l5)",
+    metaphor: "The door — how humans reach the system",
+    metaphorZh: "門——人類如何接觸系統",
+    detail: "Chat windows, CLI, desktop apps, APIs, ambient devices. The same Skills produce the same output regardless of which interface triggers them. The interface adapts to the human; the intelligence stays constant.",
+    detailZh: "聊天視窗、CLI、桌面應用、API、環境裝置。無論哪個介面觸發，同樣的 Skills 都產出相同的輸出。介面適應人類；智能保持不變。"
+  },
+  {
+    num: 4, name: "Agent", zh: "代理層",
+    color: "var(--l4)",
+    metaphor: "The colleague — persistent identity and memory across time",
+    metaphorZh: "同事——跨時間的持續身份和記憶",
+    detail: "A while loop with memory. The Agent reads project state at startup (SOUL.md, DAILY.md), executes tasks, writes state back. Only ~1.6% is AI decision logic; 98.4% is deterministic infrastructure. The simplicity is the point.",
+    detailZh: "一個有記憶的 while 迴圈。Agent 在啟動時讀取專案狀態（SOUL.md、DAILY.md），執行任務，寫回狀態。只有約 1.6% 是 AI 決策邏輯；98.4% 是確定性基礎設施。簡單就是重點。"
+  },
+  {
+    num: 3, name: "Skills", zh: "技能層",
+    color: "var(--l3)",
+    metaphor: "The expertise — reusable workflow knowledge",
+    metaphorZh: "專業知識——可重用的工作流程知識",
+    detail: "Markdown files that encode domain expertise: process steps, validation criteria, output specs. The key insight: you don't need to code to write a Skill. If you can describe your job, you can build a Skill. Domain experts are the builders of this layer.",
+    detailZh: "編碼領域專業知識的 Markdown 檔案：流程步驟、驗證標準、輸出規格。關鍵洞見：你不需要寫程式來建構 Skill。如果你能描述你的工作，你就能建構 Skill。領域專家是這一層的建構者。"
+  },
+  {
+    num: 2, name: "Tools & Protocols", zh: "工具與協議層",
+    color: "var(--l2)",
+    metaphor: "The hands — how the system acts on the world",
+    metaphorZh: "雙手——系統如何作用於世界",
+    detail: "File I/O, code execution, web access, APIs, MCP (Model Context Protocol). Tools are the boundary between thinking and doing. MCP standardizes tool discovery — like USB for AI capabilities.",
+    detailZh: "檔案 I/O、程式碼執行、網路存取、API、MCP（模型上下文協議）。工具是「想」和「做」之間的邊界。MCP 標準化工具發現——像 AI 能力的 USB。"
+  },
+  {
+    num: 1, name: "LLM Computation", zh: "運算層",
+    color: "var(--l1)",
+    metaphor: "The brain — reasoning, language, creation",
+    metaphorZh: "大腦——推理、語言、創造",
+    detail: "The foundation: LLM inference processing text, code, images. Stateless by design — every call is independent. All continuity comes from the layers above. The brain is powerful but amnesiac without infrastructure.",
+    detailZh: "基礎：LLM 推理處理文字、程式碼、圖像。設計上無狀態——每次呼叫都獨立。所有連續性來自上面的層。大腦很強大，但沒有基礎設施就會失憶。"
+  }
+];
+
+const products = [
+  { name: "ChatGPT / Gemini",  type: "Web Chat",    l: ["●","◐","○","○","●"] },
+  { name: "Claude.ai",         type: "Web Chat",    l: ["●","◐","○","◐","●"] },
+  { name: "Claude Code",       type: "CLI",         l: ["●","●","●","●","●"] },
+  { name: "Cowork",            type: "Desktop",     l: ["●","●","●","●","●"] },
+  { name: "Cursor / Windsurf", type: "IDE",         l: ["●","●","◐","◐","●"] },
+  { name: "Notion AI / Canva", type: "SaaS + AI",   l: ["◐","◐","○","○","●"] },
+  { name: "Apple Intelligence", type: "Mobile OS",  l: ["◐","◐","○","○","●"] },
+];
+
+const levelColors = ["var(--l1)","var(--l2)","var(--l3)","var(--l4)","var(--l5)"];
+const dotStyle = (v) => v === "●" ? "dot-full" : v === "◐" ? "dot-partial" : "dot-none";
+
+const pathLevels = [
+  {
+    level: 1, name: "Conversation", zh: "對話",
+    color: "var(--l1)",
+    desc: "Talk to AI, get responses. Every session starts from zero.",
+    descZh: "和 AI 對話，得到回應。每次工作階段都從零開始。",
+    who: "Anyone 任何人"
+  },
+  {
+    level: 2, name: "Tool Use", zh: "工具使用",
+    color: "var(--l2)",
+    desc: "AI reads your files, writes documents, executes code. The brain gets hands.",
+    descZh: "AI 讀取你的檔案、撰寫文件、執行程式碼。大腦有了手。",
+    who: "Anyone with basic tech comfort"
+  },
+  {
+    level: 3, name: "Skill Building", zh: "技能建構",
+    color: "var(--l3)",
+    desc: "Create reusable workflows. Domain experts — not engineers — are the key builders here.",
+    descZh: "建立可重用的工作流程。領域專家——不是工程師——是這裡的關鍵建構者。",
+    who: "Domain Experts (YOU) 領域專家（就是你）"
+  },
+  {
+    level: 4, name: "Agent Orchestration", zh: "代理調度",
+    color: "var(--l4)",
+    desc: "Persistent AI that manages projects over time. Memory + identity + multi-session continuity.",
+    descZh: "跨時間管理專案的持續性 AI。記憶 + 身份 + 多工作階段連續性。",
+    who: "Domain Experts + Engineers 領域專家 + 工程師"
+  }
+];
+
+const compositionSkills = [
+  { id: "D", label: "D: Draft", active: true },
+  { id: "→", label: "→", isArrow: true },
+  { id: "1", label: "1: Setup", active: true },
+  { id: "→2", label: "→", isArrow: true },
+  { id: "2", label: "2: Track", active: true },
+  { id: "→3", label: "→", isArrow: true },
+  { id: "3", label: "3: Execute", active: true },
+  { id: "→4", label: "→", isArrow: true },
+  { id: "5", label: "5: Report", active: true },
+  { id: "→5", label: "→", isArrow: true },
+  { id: "E", label: "E: Deliver", active: true },
+];
+
+// ─── Components ───
+
+function FiveLayerStack() {
+  const [active, setActive] = useState(null);
+  return (
+    <div className="layer-stack">
+      {layers.map((layer) => (
+        <div
+          key={layer.num}
+          className={`layer-card ${active === layer.num ? 'active' : ''}`}
+          style={{ '--layer-color': layer.color }}
+          onClick={() => setActive(active === layer.num ? null : layer.num)}
+        >
+          <div className="layer-num">L{layer.num}</div>
+          <div>
+            <div className="layer-body">
+              <h3>{layer.name}</h3>
+              <div className="layer-zh">{layer.zh}</div>
+              <div className="layer-metaphor">{layer.metaphor}</div>
+            </div>
+            <div className="layer-detail">
+              <p style={{marginBottom: 8}}>{layer.detail}</p>
+              <p style={{fontSize: '0.82rem'}}>{layer.detailZh}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProductTable() {
+  return (
+    <div className="product-grid">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th style={{color: 'var(--l1)'}}>L1 Brain</th>
+            <th style={{color: 'var(--l2)'}}>L2 Tools</th>
+            <th style={{color: 'var(--l3)'}}>L3 Skills</th>
+            <th style={{color: 'var(--l4)'}}>L4 Agent</th>
+            <th style={{color: 'var(--l5)'}}>L5 Interface</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((p) => (
+            <tr key={p.name}>
+              <td>{p.name} <span style={{color:'var(--text-dim)', fontWeight:400, fontSize:'0.78rem'}}>({p.type})</span></td>
+              {p.l.map((v, i) => (
+                <td key={i}><span className={dotStyle(v)} style={{color: levelColors[i]}}>{v === "○" ? "○" : v}</span></td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function LearningPath() {
+  return (
+    <div className="path-timeline">
+      {pathLevels.map((pl) => (
+        <div key={pl.level} className="path-node" style={{'--node-color': pl.color}}>
+          <div><div className="path-dot" /></div>
+          <div className="path-content">
+            <h4 style={{color: pl.color}}>Level {pl.level}: {pl.name}</h4>
+            <div className="path-zh">{pl.zh}</div>
+            <div className="path-desc">{pl.desc}</div>
+            <div className="path-desc" style={{fontSize:'0.82rem'}}>{pl.descZh}</div>
+            <span className="path-who">{pl.who}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CompositionDemo() {
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+  return (
+    <div className="comp-demo">
+      <div className="comp-flow">
+        {compositionSkills.map((s, i) => (
+          s.isArrow
+            ? <span key={i} className="comp-arrow">→</span>
+            : <span
+                key={i}
+                className={`comp-skill ${hoveredIdx !== null ? (i === hoveredIdx ? 'highlight' : '') : 'highlight'}`}
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
+              >{s.label}</span>
+        ))}
+      </div>
+      <div className="comp-caption">
+        <strong>The "a235bc1e" Pattern</strong> — The LLM dynamically selects and sequences Skills from two different pipelines (Proposal: A-E, Project: 1-5) to create a new composition that neither pipeline defines alone.<br/>
+        <span style={{fontSize:'0.8rem'}}>
+          LLM 從兩條不同的管線（提案：A-E，專案：1-5）動態選擇和排序 Skills，創造任一管線都無法單獨定義的新組合。
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <nav>
+        <a href="#five-layers">Five-Layer Model</a>
+        <a href="#products">Product Map</a>
+        <a href="#learning">Learning Path</a>
+        <a href="#composition">Skill Composition</a>
+        <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+
+      <header className="hero">
+        <h1>Agentic Substrate</h1>
+        <p className="subtitle">
+          The foundational architecture of LLM-native software — explained so everyone can understand it.<br/>
+          <span style={{fontSize:'0.88em'}}>LLM 原生軟體的底層架構原則——讓每個人都能理解的方式來解釋。</span>
+        </p>
+        <div className="cta">
+          <a href="docs/03-claude-case-study/claude-architecture.md" className="cta-primary">Read: A Letter from the Inside</a>
+          <a href="docs/04-curriculum/learning-path.md" className="cta-secondary">Start Learning</a>
+        </div>
+      </header>
+
+      <div className="container">
+        <section id="five-layers">
+          <h2>The Five-Layer Model</h2>
+          <p className="section-sub">Click any layer to explore · 點擊任何層來探索</p>
+          <FiveLayerStack />
+        </section>
+
+        <section id="products">
+          <h2>Where Today's Products Sit</h2>
+          <p className="section-sub">● Full · ◐ Partial · ○ Minimal</p>
+          <ProductTable />
+        </section>
+
+        <section id="learning">
+          <h2>Learning Path</h2>
+          <p className="section-sub">From chat to agent — four levels, for everyone · 從聊天到 Agent——四個等級，為所有人設計</p>
+          <LearningPath />
+        </section>
+
+        <section id="composition">
+          <h2>Dynamic Skill Composition</h2>
+          <p className="section-sub">Skills compose semantically at runtime — no hardcoded pipelines · Skills 在運行時語義式組合——沒有硬編碼管線</p>
+          <CompositionDemo />
+        </section>
+      </div>
+
+      <footer>
+        <p style={{marginBottom:8}}>
+          <strong>Agentic Substrate</strong> — by <a href="https://github.com/ahnchen1983/agentic-substrate">Ahn Chen</a> & Claude (Opus 4.6)
+        </p>
+        <p>
+          Content: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · Code: <a href="LICENSE">MIT</a>
+        </p>
+        <p style={{marginTop:8}}>
+          <a href="docs/01-foundations/agentic-substrate.md">Core Architecture</a> ·
+          <a href="docs/01-foundations/five-layer-model.md">Five-Layer Model</a> ·
+          <a href="docs/01-foundations/skill-anatomy.md">Skill Anatomy</a> ·
+          <a href="docs/02-architecture/landscape.md">Landscape</a> ·
+          <a href="ROADMAP.md">Roadmap</a>
+        </p>
+      </footer>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
