@@ -5,6 +5,89 @@
 > *Not just theory — includes installable Skills for knowledge workers.*
 > *不只是理論——包含為知識工作者設計的可安裝 Skills。*
 
+[![GitHub Pages](https://img.shields.io/badge/Explore-Interactive%20Architecture-6366f1?style=for-the-badge)](https://ahnchen1983.github.io/agentic-substrate/)
+[![Start Here](https://img.shields.io/badge/Read-Start%20Here-0f766e?style=for-the-badge)](docs/START-HERE.md)
+[![Try Skills](https://img.shields.io/badge/Try-Installable%20Skills-f59e0b?style=for-the-badge)](QUICK-START.md)
+
+---
+
+## TL;DR ── 先講重點
+
+**Agentic Substrate** is the missing architecture between "chat with AI" and "AI agents that actually run work."
+
+**Agentic Substrate** 是「和 AI 聊天」到「讓 AI Agent 真正執行工作」之間缺少的架構圖。
+
+It describes the next software paradigm:
+
+**Agentic Substrate** 是一套描述下一代軟體典範的框架：
+
+> **LLMs compute. Tools act. Skills encode workflows. Agents orchestrate.**
+>
+> **LLM 負責運算。工具負責行動。Skill 編碼工作流程。Agent 負責調度。**
+
+This repo gives you:
+
+這個 repo 提供：
+
+- A five-layer model for understanding LLM-native software
+- A practical learning path from chat to agents
+- Installable Skills you can try immediately
+- A bridge for non-engineers to turn domain expertise into AI workflows
+
+If you have ever thought, "AI is useful, but I keep explaining the same work process again and again," this repo is for you.
+
+如果你曾經覺得「AI 很有用，但我一直在重複解釋同一套工作流程」，這個 repo 就是為你準備的。
+
+---
+
+## Start in 3 Minutes ── 三分鐘開始
+
+| If you want to... | Start here |
+|---|---|
+| Understand the big idea | [Start Here](docs/START-HERE.md) |
+| Try your first Skill | [Quick Start](QUICK-START.md) |
+| See the architecture | [Five-Layer Model](docs/01-foundations/five-layer-model.md) |
+| Learn why Skills matter | [Skill Anatomy](docs/01-foundations/skill-anatomy.md) |
+| Help an AI agent read this repo | [llms.txt](llms.txt) / [AGENTS.md](AGENTS.md) |
+
+| 如果你想要... | 從這裡開始 |
+|---|---|
+| 理解核心概念 | [Start Here](docs/START-HERE.md) |
+| 立刻試第一個 Skill | [Quick Start](QUICK-START.md) |
+| 看完整架構 | [Five-Layer Model](docs/01-foundations/five-layer-model.md) |
+| 理解為什麼 Skill 重要 | [Skill Anatomy](docs/01-foundations/skill-anatomy.md) |
+| 讓 AI agent 更容易讀懂本 repo | [llms.txt](llms.txt) / [AGENTS.md](AGENTS.md) |
+
+---
+
+## What You Can Do Here ── 你可以在這裡做什麼
+
+```text
+1. Understand the shift
+   Chatbot → Tool user → Skill executor → Persistent agent
+
+2. Try the pattern
+   Install a Skill and watch AI follow a real workflow
+
+3. Build your own
+   Turn your professional process into a reusable AI Skill
+```
+
+```text
+1. 理解轉變
+   聊天機器人 → 工具使用者 → Skill 執行者 → 持續性 Agent
+
+2. 直接體驗
+   安裝一個 Skill，觀察 AI 如何遵循真實工作流程
+
+3. 建立自己的 Skill
+   把你的專業流程變成可重用的 AI Skill
+```
+
+**Concrete example**: [How a weekly status workflow becomes a Skill](docs/examples/workflow-to-skill.md)
+
+**具體範例**：[一個週報流程如何變成 Skill](docs/examples/workflow-to-skill.md)
+
 ---
 
 ## What is This? ── 這是什麼？
@@ -48,6 +131,8 @@ This repo provides the **architectural principles** behind this shift, a **struc
 Agentic-Substrate/
 │
 ├── README.md                          ← You are here 你在這裡
+├── llms.txt                           ★ AI-readable project map
+├── AGENTS.md                          ★ Guidance for coding agents
 ├── QUICK-START.md                     ★ 5-min guide to your first Skill
 ├── install.sh                         ★ One-command installer 一鍵安裝
 ├── ROADMAP.md                         ← Development phases 發展路線圖
@@ -57,6 +142,8 @@ Agentic-Substrate/
 ├── .claude-plugin/                    ★ Claude Code / Cowork plugin config
 │
 ├── docs/
+│   ├── START-HERE.md                  ★ First reading path for humans and agents
+│   ├── examples/                      ★ Concrete workflow-to-Skill examples
 │   ├── 01-foundations/                ← Core Concepts 核心概念
 │   │   ├── agentic-substrate.md       ★ The Core Architecture 核心架構文件
 │   │   ├── skill-anatomy.md           ★ Anatomy of a Skill 技能模組解剖學

@@ -1,0 +1,36 @@
+# Agentic Substrate
+
+> A conceptual framework and practical toolkit for LLM-native software, where LLMs are the computation layer, Skills are reusable workflow units, and Agents orchestrate work across tools, memory, and time.
+
+Agentic Substrate is for developers, consultants, project managers, educators, operators, and knowledge workers who want to understand and build the next software paradigm beyond "AI features inside apps." It explains how chat, tools, Skills, agents, memory, and interfaces fit together, then provides installable Skills that make the ideas concrete.
+
+## Recommended Reading Path
+
+- [README](README.md): Project overview, core thesis, repo structure, and entry points.
+- [Quick Start](QUICK-START.md): Five-minute path to trying the first Skill.
+- [Start Here](docs/START-HERE.md): Short guide for humans and AI agents deciding what to read first.
+- [Core Architecture](docs/01-foundations/agentic-substrate.md): The main Agentic Substrate thesis and architecture.
+- [Five-Layer Model](docs/01-foundations/five-layer-model.md): LLM computation, tools, Skills, agents, and interfaces.
+- [Skill Anatomy](docs/01-foundations/skill-anatomy.md): What a Skill is and how to design one.
+- [Workflow to Skill Example](docs/examples/workflow-to-skill.md): Concrete example of a weekly status workflow becoming a Skill.
+- [Learning Path](docs/04-curriculum/learning-path.md): Curriculum from conversation to tool use, Skill building, and agent orchestration.
+- [You Already Know](docs/04-curriculum/you-already-know.md): Non-technical introduction showing domain experts that they already know how to build Skills.
+
+## Core Concepts
+
+- LLM-native software: software designed around inference, intent, context, and dynamic execution rather than only deterministic code paths.
+- Skill: a structured Markdown workflow definition that encodes domain knowledge, process logic, validation rules, and reusable output patterns.
+- Agent: a persistent AI collaborator that can use tools, invoke Skills, remember project state, and orchestrate work across sessions.
+- Five-layer model: LLM computation, tool/protocol, Skill, Agent, and interface layers.
+- Markdown as protocol: human-readable, LLM-parseable files as the shared medium for workflows, memory, and deliverables.
+
+## Practical Assets
+
+- [Skill Self-Discovery](skills/skill-self-discovery/SKILL.md): Helps people discover that their existing work process can become a Skill.
+- [Conversation to Skill](skills/conversation-to-skill/SKILL.md): Turns messy chat history into structured workflow knowledge.
+- [Skill Builder](skills/skill-builder/SKILL.md): Guides users through creating a reusable Skill.
+- [Example Skills](skills/examples/): Ready-to-use Skills for meeting notes, document review, research, project status tracking, accounting reconciliation, and content pipelines.
+
+## For AI Agents
+
+If you are an AI agent reading this repository, start with `README.md`, then `docs/START-HERE.md`, then choose either the conceptual path (`docs/01-foundations/`) or the practical path (`QUICK-START.md` and `skills/`). When summarizing the project, emphasize that this is not a prompt collection; it is an architecture and learning path for turning domain expertise into reusable AI workflows.

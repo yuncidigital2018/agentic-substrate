@@ -1,0 +1,32 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" fill="#090A0F"/>
+  <rect x="48" y="48" width="1184" height="544" rx="28" fill="#10131D" stroke="#272B3A" stroke-width="2"/>
+  <circle cx="1084" cy="126" r="160" fill="#6366F1" opacity="0.16"/>
+  <circle cx="178" cy="510" r="190" fill="#14B8A6" opacity="0.12"/>
+  <g transform="translate(116 102)">
+    <text x="0" y="52" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="800">Agentic Substrate</text>
+    <text x="2" y="104" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">The architecture of LLM-native software</text>
+  </g>
+  <g transform="translate(116 250)">
+    <rect x="0" y="0" width="1050" height="72" rx="16" fill="#171B29" stroke="#2E3448"/>
+    <text x="36" y="47" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">LLMs compute</text>
+    <text x="286" y="47" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">+</text>
+    <text x="332" y="47" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Tools act</text>
+    <text x="514" y="47" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">+</text>
+    <text x="560" y="47" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Skills encode workflows</text>
+    <text x="924" y="47" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">+</text>
+  </g>
+  <g transform="translate(116 342)">
+    <rect x="0" y="0" width="1050" height="72" rx="16" fill="#171B29" stroke="#2E3448"/>
+    <text x="36" y="47" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Agents orchestrate work across memory, tools, and time</text>
+  </g>
+  <g transform="translate(116 474)">
+    <rect x="0" y="0" width="160" height="46" rx="23" fill="#F59E0B"/>
+    <text x="34" y="31" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">Skills</text>
+    <rect x="182" y="0" width="166" height="46" rx="23" fill="#14B8A6"/>
+    <text x="218" y="31" fill="#042F2E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">Agents</text>
+    <rect x="370" y="0" width="240" height="46" rx="23" fill="#6366F1"/>
+    <text x="406" y="31" fill="#EEF2FF" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">LLM-native software</text>
+  </g>
+  <text x="116" y="566" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="500">github.com/ahnchen1983/agentic-substrate</text>
+</svg>
