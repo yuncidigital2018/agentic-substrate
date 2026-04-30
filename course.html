@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>從聊天到協作 - 生成式 AI 三堂課</title>
+<meta name="description" content="A three-session interactive course built on Agentic Substrate: understand generative AI, choose tools, and turn daily workflows into Skills.">
+<meta property="og:title" content="從聊天到協作 - 生成式 AI 三堂課">
+<meta property="og:description" content="把 Agentic Substrate 轉成三堂可互動教學的生成式 AI 課程。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ahnchen1983.github.io/agentic-substrate/assets/social-preview.png">
+<style>
+  :root {
+    --bg: #f7faf8;
+    --ink: #14211f;
+    --muted: #60706b;
+    --line: #d7e3de;
+    --panel: #ffffff;
+    --panel-2: #edf7f3;
+    --green: #0f8f73;
+    --teal: #1aa38b;
+    --amber: #d9911f;
+    --blue: #4267d5;
+    --rose: #bd4d68;
+    --shadow: 0 18px 50px rgba(24, 49, 43, 0.14);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+  }
+  a { color: inherit; }
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background:
+      linear-gradient(135deg, rgba(15, 143, 115, 0.18), rgba(255,255,255,0) 32%),
+      radial-gradient(circle at 88% 12%, rgba(66,103,213,0.18), rgba(255,255,255,0) 30%),
+      var(--bg);
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    padding: 70px clamp(28px, 5vw, 76px) 58px;
+    overflow: hidden;
+  }
+  .slide.active { display: flex; animation: in 0.28s ease; }
+  @keyframes in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .slide-inner {
+    width: min(1180px, 100%);
+    margin: auto;
+  }
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .kicker::before {
+    content: "";
+    width: 30px;
+    height: 3px;
+    border-radius: 999px;
+    background: currentColor;
+  }
+  h1, h2, h3, p { margin: 0; }
+  h1 {
+    max-width: 780px;
+    font-size: clamp(38px, 7vw, 78px);
+    line-height: 1.08;
+    letter-spacing: 0;
+    font-weight: 850;
+  }
+  h2 {
+    font-size: clamp(30px, 4.2vw, 54px);
+    line-height: 1.16;
+    letter-spacing: 0;
+    font-weight: 820;
+    margin-bottom: 22px;
+  }
+  h3 {
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.35;
+    font-weight: 760;
+    margin-bottom: 10px;
+  }
+  p {
+    color: var(--muted);
+    font-size: clamp(15px, 1.35vw, 19px);
+    line-height: 1.85;
+  }
+  .lead { max-width: 760px; color: #344641; font-size: clamp(18px, 2vw, 23px); }
+  .meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .pill {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 14px;
+    background: rgba(255,255,255,0.78);
+    color: #2a3c37;
+    font-size: 14px;
+    font-weight: 680;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panel {
+    background: rgba(255,255,255,0.84);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset;
+  }
+  .panel strong { color: var(--ink); }
+  .panel p { font-size: 15px; line-height: 1.7; }
+  .panel.accent-green { border-top: 4px solid var(--green); }
+  .panel.accent-amber { border-top: 4px solid var(--amber); }
+  .panel.accent-blue { border-top: 4px solid var(--blue); }
+  .panel.accent-rose { border-top: 4px solid var(--rose); }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+  .day {
+    padding: 26px;
+    min-height: 280px;
+    border-right: 1px solid var(--line);
+  }
+  .day:last-child { border-right: 0; }
+  .day .date {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 760;
+    margin-bottom: 14px;
+  }
+  .day .type {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 14px 0 18px;
+  }
+  .day ul, .clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .day li, .clean-list li {
+    color: #435550;
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 16px;
+    position: relative;
+  }
+  .day li::before, .clean-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+  .stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    max-width: 720px;
+  }
+  .layer {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--panel);
+    cursor: pointer;
+  }
+  .layer b {
+    display: grid;
+    place-items: center;
+    background: var(--panel-2);
+    color: var(--green);
+    font-size: 18px;
+  }
+  .layer div { padding: 14px 18px; }
+  .layer span { display: block; color: var(--muted); font-size: 14px; line-height: 1.55; margin-top: 3px; }
+  .layer.active { border-color: var(--green); box-shadow: 0 0 0 3px rgba(15,143,115,0.12); }
+  .tool-board {
+    display: grid;
+    grid-template-columns: 1.05fr 1.4fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .task-list button {
+    width: 100%;
+    text-align: left;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 8px;
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .task-list button.active {
+    border-color: var(--green);
+    background: #e7f6f1;
+  }
+  .tool-result {
+    background: #101b18;
+    color: #e9fff8;
+    border-radius: 8px;
+    padding: 24px;
+    min-height: 320px;
+  }
+  .tool-result p { color: #b8d4cc; }
+  .tool-result .chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+  }
+  .tool-result .chips span {
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+  .worksheet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .question {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .question label {
+    display: block;
+    font-size: 14px;
+    font-weight: 760;
+    margin-bottom: 8px;
+  }
+  .question textarea {
+    width: 100%;
+    min-height: 72px;
+    resize: vertical;
+    border: 1px solid #cbd9d3;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font: inherit;
+    line-height: 1.45;
+    color: var(--ink);
+    background: #fbfefd;
+  }
+  .action-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .btn {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: var(--panel);
+    color: var(--ink);
+    cursor: pointer;
+    font-weight: 760;
+  }
+  .btn.primary {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+  .output {
+    margin-top: 14px;
+    white-space: pre-wrap;
+    background: #101b18;
+    color: #dffaf2;
+    border-radius: 8px;
+    padding: 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    max-height: 260px;
+    overflow: auto;
+  }
+  .run-of-show {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .run-of-show div { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .run-of-show div:nth-last-child(-n+2) { border-bottom: 0; }
+  .run-of-show .time { background: var(--panel-2); color: var(--green); font-weight: 800; }
+  .visual {
+    position: absolute;
+    right: clamp(20px, 6vw, 90px);
+    top: clamp(80px, 14vh, 150px);
+    width: min(35vw, 390px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(15,143,115,0.22);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at center, rgba(15,143,115,0.2), rgba(15,143,115,0.06) 40%, transparent 41%),
+      conic-gradient(from 90deg, rgba(15,143,115,0.12), rgba(66,103,213,0.16), rgba(217,145,31,0.16), rgba(15,143,115,0.12));
+  }
+  .visual::before, .visual::after {
+    content: "";
+    position: absolute;
+    inset: 18%;
+    border-radius: 50%;
+    border: 1px solid rgba(20,33,31,0.14);
+  }
+  .visual::after {
+    inset: 36%;
+    background: rgba(255,255,255,0.44);
+  }
+  .nav {
+    position: fixed;
+    right: 24px;
+    bottom: 22px;
+    z-index: 20;
+    display: flex;
+    gap: 8px;
+  }
+  .nav button, .home-link {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.86);
+    color: var(--ink);
+    font-size: 18px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+  }
+  .counter {
+    position: fixed;
+    left: 24px;
+    bottom: 30px;
+    z-index: 20;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .dots {
+    position: fixed;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    display: grid;
+    gap: 8px;
+    z-index: 20;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border: 0;
+    border-radius: 50%;
+    background: #bdd0ca;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--green); transform: scale(1.5); }
+  .note {
+    margin-top: 20px;
+    border-left: 4px solid var(--green);
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.72);
+    color: #40534d;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  @media (max-width: 850px) {
+    body { overflow: auto; }
+    .deck { height: auto; min-height: 100vh; }
+    .slide { position: relative; min-height: 100vh; padding: 70px 22px 84px; }
+    .slide:not(.active) { display: none; }
+    .grid, .grid.two, .timeline, .tool-board, .worksheet { grid-template-columns: 1fr; }
+    .day { border-right: 0; border-bottom: 1px solid var(--line); min-height: auto; }
+    .day:last-child { border-bottom: 0; }
+    .visual { opacity: 0.22; right: -120px; top: 90px; width: 300px; }
+    .dots { display: none; }
+  }
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+  <section class="slide active">
+    <div class="visual" aria-hidden="true"></div>
+    <div class="slide-inner">
+      <div class="kicker">Agentic Substrate Course</div>
+      <h1>從聊天到協作：生成式 AI 時代的工作方法升級</h1>
+      <p class="lead" style="margin-top:22px;">三堂兩小時課，把「重新認識 AI」、「選擇與搭配工具」、「把日常流程變成 Skill」串成一條清楚的學習路徑。</p>
+      <div class="meta">
+        <span class="pill">115/05/14 - 趨勢講座</span>
+        <span class="pill">115/05/15 - 趨勢講座</span>
+        <span class="pill">115/05/16 - 實作工作坊</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Learning Journey</div>
+      <h2>三天不是工具清單，而是一段認知升級</h2>
+      <div class="timeline">
+        <article class="day">
+          <div class="date">Day 1 - 115/05/14 10:00-12:00</div>
+          <h3>重新認識生成式 AI</h3>
+          <div class="type">從聊天工具，看到新的軟體架構。</div>
+          <ul>
+            <li>生成式 AI 到底改變了什麼</li>
+            <li>ChatGPT 只是入口，不是全部</li>
+            <li>五層模型的直覺版</li>
+          </ul>
+        </article>
+        <article class="day">
+          <div class="date">Day 2 - 115/05/15 10:00-12:00</div>
+          <h3>AI 工具的選擇與搭配</h3>
+          <div class="type">從問哪個工具好，變成設計工具組合。</div>
+          <ul>
+            <li>依任務選工具，而不是追品牌</li>
+            <li>搜尋、寫作、分析、設計、執行</li>
+            <li>把任務拆成 AI 工作流</li>
+          </ul>
+        </article>
+        <article class="day">
+          <div class="date">Day 3 - 115/05/16 10:00-12:00</div>
+          <h3>AI 生成靈魂融入你的日常</h3>
+          <div class="type">從會用 AI，變成會教 AI 做自己的事。</div>
+          <ul>
+            <li>什麼是 Skill</li>
+            <li>七個問題萃取工作流程</li>
+            <li>完成自己的 AI 工作流卡</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Repo Bridge</div>
+      <h2>這三堂課，直接對應 repo 的學習路徑</h2>
+      <div class="grid">
+        <div class="panel accent-green">
+          <h3>Level 1: Conversation</h3>
+          <p>學員熟悉的起點：問問題、得到答案。第一堂課用這裡建立共同語言。</p>
+        </div>
+        <div class="panel accent-amber">
+          <h3>Level 2: Tool Use</h3>
+          <p>第二堂課進入工具與任務搭配：AI 不只回答，也能搜尋、整理、寫文件、分析資料。</p>
+        </div>
+        <div class="panel accent-blue">
+          <h3>Level 3: Skill Building</h3>
+          <p>第三堂課把個人日常流程寫成 Skill 雛形，讓 AI 可以重複遵循你的工作方法。</p>
+        </div>
+      </div>
+      <div class="note">對外可以說：這不是單純教 prompt，而是帶你從「使用 AI」走到「設計 AI 協作流程」。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Day 1</div>
+      <h2>重新認識生成式 AI：先換一張地圖</h2>
+      <div class="grid two">
+        <div class="panel accent-green">
+          <h3>學員帶走的觀念</h3>
+          <ul class="clean-list">
+            <li>AI 不只是聊天機器人，而是新的推理與生成層</li>
+            <li>好的使用方式，來自清楚的任務與情境</li>
+            <li>未來的軟體單元，會越來越像可組合的 Skill</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>120 分鐘流程</h3>
+          <div class="run-of-show">
+            <div class="time">0-15</div><div>暖身：大家現在怎麼用 AI</div>
+            <div class="time">15-45</div><div>生成式 AI 的能力邊界與常見誤解</div>
+            <div class="time">45-80</div><div>從 App 到 Agentic Substrate</div>
+            <div class="time">80-105</div><div>案例拆解：同一任務的三種做法</div>
+            <div class="time">105-120</div><div>問答與隔天工具課鋪陳</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Five-Layer Model</div>
+      <h2>五層模型，用課堂語言講</h2>
+      <div class="grid two">
+        <div class="stack" id="layerStack">
+          <div class="layer active" data-detail="LLM 是推理與語言理解的底層能力。它像大腦，但沒有工具就只能說，不能做。"><b>L1</b><div>LLM 運算層<span>AI 怎麼理解、推理、生成。</span></div></div>
+          <div class="layer" data-detail="工具讓 AI 可以讀檔、查網路、執行程式、呼叫服務。這是從回答走向交付的關鍵。"><b>L2</b><div>工具與協議層<span>AI 怎麼接觸世界。</span></div></div>
+          <div class="layer" data-detail="Skill 是把人的專業流程寫成 AI 可遵循的工作單元。第三堂課會讓學員親手做一張。"><b>L3</b><div>Skill 層<span>AI 怎麼學會你的工作方法。</span></div></div>
+          <div class="layer" data-detail="Agent 能跨步驟、跨工具、甚至跨時間維持目標。這是進階，但要先從 Skill 開始。"><b>L4</b><div>Agent 層<span>AI 怎麼變成長期協作者。</span></div></div>
+          <div class="layer" data-detail="聊天視窗、網站、IDE、手機都是介面。介面會變，但底層工作流設計會留下來。"><b>L5</b><div>介面層<span>人怎麼進入這套系統。</span></div></div>
+        </div>
+        <div class="panel accent-green">
+          <h3 id="layerTitle">L1 - LLM 運算層</h3>
+          <p id="layerDetail">LLM 是推理與語言理解的底層能力。它像大腦，但沒有工具就只能說，不能做。</p>
+          <div class="note">這張圖是第一堂的核心。它讓學員知道：工具只是表面，真正重要的是你如何設計任務與流程。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Day 2</div>
+      <h2>AI 工具的選擇與搭配：先問任務，不先問品牌</h2>
+      <div class="tool-board">
+        <div class="task-list" id="taskList">
+          <button class="active" data-task="research">我需要快速理解一個新議題</button>
+          <button data-task="writing">我需要把想法整理成文章或簡報</button>
+          <button data-task="analysis">我需要分析資料或比較方案</button>
+          <button data-task="workflow">我需要讓 AI 參與固定流程</button>
+        </div>
+        <div class="tool-result">
+          <h3 id="toolTitle">新議題研究</h3>
+          <p id="toolBody">適合搭配搜尋型 AI、通用 LLM、筆記工具。重點不是只找答案，而是要求來源、摘要、分歧觀點與待查問題。</p>
+          <div class="chips" id="toolChips"><span>Perplexity</span><span>ChatGPT</span><span>Claude</span><span>Notebook</span></div>
+          <p id="toolFlow">建議流程：搜尋與來源 -> 摘要 -> 爭點整理 -> 轉成行動問題。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Workflow Thinking</div>
+      <h2>工具搭配，其實是在設計一條工作流</h2>
+      <div class="grid">
+        <div class="panel accent-green">
+          <h3>Input</h3>
+          <p>資料、想法、檔案、對話紀錄、現場情境。先確認 AI 可以拿到什麼。</p>
+        </div>
+        <div class="panel accent-amber">
+          <h3>Process</h3>
+          <p>搜尋、分類、比較、萃取、生成、驗證。工具的價值在這裡組合。</p>
+        </div>
+        <div class="panel accent-blue">
+          <h3>Output</h3>
+          <p>報告、簡報、清單、決策建議、下一步行動。輸出要能被人直接使用。</p>
+        </div>
+      </div>
+      <div class="note">第二堂的練習：請學員選一件工作，寫下「輸入是什麼、處理要幾步、最後要交付什麼」。這會自然銜接第三堂 Skill。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Day 3</div>
+      <h2>AI 生成靈魂融入日常：把你的方法寫成 Skill</h2>
+      <div class="grid two">
+        <div class="panel accent-blue">
+          <h3>課堂主張</h3>
+          <p>你的專業不是藏在工具裡，而是藏在你每天判斷、排序、檢查、修正的流程裡。把這些寫下來，就是 AI 可以學會的 Skill。</p>
+          <div class="note">這堂不是 prompt 課，而是「工作方法萃取」工作坊。</div>
+        </div>
+        <div class="panel">
+          <h3>Skill 的七個欄位</h3>
+          <ul class="clean-list">
+            <li>這件事負責什麼</li>
+            <li>什麼情況啟動</li>
+            <li>需要哪些輸入</li>
+            <li>執行步驟是什麼</li>
+            <li>產出長什麼樣</li>
+            <li>怎麼驗證品質</li>
+            <li>前後接哪些工作</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Interactive Worksheet</div>
+      <h2>我的 AI 工作流卡</h2>
+      <div class="worksheet">
+        <div class="question"><label>1. 這件事負責什麼？</label><textarea id="q1" placeholder="例如：每週整理專案進度，給主管與團隊看。"></textarea></div>
+        <div class="question"><label>2. 什麼時候開始？</label><textarea id="q2" placeholder="例如：每週五、會議後、收到資料後。"></textarea></div>
+        <div class="question"><label>3. 需要哪些輸入？</label><textarea id="q3" placeholder="例如：會議紀錄、任務清單、客戶回饋。"></textarea></div>
+        <div class="question"><label>4. 步驟是什麼？</label><textarea id="q4" placeholder="例如：先分類，再找風險，再寫摘要。"></textarea></div>
+        <div class="question"><label>5. 產出長什麼樣？</label><textarea id="q5" placeholder="例如：一頁摘要、表格、email 草稿。"></textarea></div>
+        <div class="question"><label>6. 怎麼檢查好壞？</label><textarea id="q6" placeholder="例如：每個行動都有負責人與期限。"></textarea></div>
+        <div class="question"><label>7. 前後接什麼流程？</label><textarea id="q7" placeholder="例如：前面接會議，後面接任務分派。"></textarea></div>
+        <div class="question"><label>Skill 名稱</label><textarea id="qName" placeholder="例如：Weekly Status Synthesizer"></textarea></div>
+      </div>
+      <div class="action-row">
+        <button class="btn primary" id="buildSkill">產生 Skill 草稿</button>
+        <button class="btn" id="clearSkill">清空</button>
+      </div>
+      <pre class="output" id="skillOutput">填寫工作流卡後，可以在這裡產生一份 SKILL.md 草稿。</pre>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Teaching Flow</div>
+      <h2>三堂課可以共用同一個敘事</h2>
+      <div class="grid">
+        <div class="panel accent-green">
+          <h3>Day 1: 看懂位置</h3>
+          <p>生成式 AI 不是單一產品，而是一個新的工作系統入口。</p>
+        </div>
+        <div class="panel accent-amber">
+          <h3>Day 2: 選對組合</h3>
+          <p>工具不是拿來收集，而是拿來放進任務流程裡。</p>
+        </div>
+        <div class="panel accent-blue">
+          <h3>Day 3: 寫出方法</h3>
+          <p>真正的差異化，是把自己的判斷與流程變成 AI 可重用的 Skill。</p>
+        </div>
+      </div>
+      <div class="note">這樣設計的好處：即使課程對象是初學者，也不會停在「今天介紹很多工具」。他們會帶走一套看世界的方法。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Course Outcome</div>
+      <h2>最後讓學員帶走三樣東西</h2>
+      <div class="grid">
+        <div class="panel accent-green">
+          <h3>一張 AI 地圖</h3>
+          <p>知道 ChatGPT、工具、Skill、Agent 分別站在哪裡，不再被產品名稱牽著走。</p>
+        </div>
+        <div class="panel accent-amber">
+          <h3>一套選工具方法</h3>
+          <p>能從任務出發，判斷需要搜尋、生成、分析、設計，還是流程協作。</p>
+        </div>
+        <div class="panel accent-blue">
+          <h3>一張工作流卡</h3>
+          <p>把自己的日常工作流程整理成 AI 可以理解、可以重複執行的 Skill 草稿。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="kicker">Closing</div>
+      <h2>從會使用 AI，到會設計 AI 協作</h2>
+      <p class="lead">這三堂課的真正價值，是讓學員發現：自己的專業流程不是被 AI 取代的東西，而是讓 AI 變得有用的關鍵材料。</p>
+      <div class="meta">
+        <a class="pill" href="index.html">Agentic Substrate</a>
+        <a class="pill" href="docs/04-curriculum/learning-path.md">Learning Path</a>
+        <a class="pill" href="docs/examples/workflow-to-skill.md">Workflow to Skill</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="counter" id="counter">1 / 11</div>
+<div class="dots" id="dots"></div>
+<div class="nav">
+  <a class="home-link" href="index.html" aria-label="Home">H</a>
+  <button id="prev" aria-label="Previous">‹</button>
+  <button id="next" aria-label="Next">›</button>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const counter = document.getElementById("counter");
+  const dots = document.getElementById("dots");
+  let current = 0;
+
+  slides.forEach((_, index) => {
+    const button = document.createElement("button");
+    button.className = "dot" + (index === 0 ? " active" : "");
+    button.setAttribute("aria-label", "Slide " + (index + 1));
+    button.addEventListener("click", () => show(index));
+    dots.appendChild(button);
+  });
+
+  function show(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach((slide, i) => slide.classList.toggle("active", i === current));
+    dots.querySelectorAll(".dot").forEach((dot, i) => dot.classList.toggle("active", i === current));
+    counter.textContent = (current + 1) + " / " + slides.length;
+  }
+
+  document.getElementById("prev").addEventListener("click", () => show(current - 1));
+  document.getElementById("next").addEventListener("click", () => show(current + 1));
+  document.addEventListener("keydown", event => {
+    if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+      event.preventDefault();
+      show(current + 1);
+    }
+    if (event.key === "ArrowLeft" || event.key === "PageUp") {
+      event.preventDefault();
+      show(current - 1);
+    }
+  });
+
+  document.querySelectorAll(".layer").forEach(layer => {
+    layer.addEventListener("click", () => {
+      document.querySelectorAll(".layer").forEach(item => item.classList.remove("active"));
+      layer.classList.add("active");
+      document.getElementById("layerTitle").textContent = layer.querySelector("b").textContent + " - " + layer.querySelector("div").childNodes[0].textContent;
+      document.getElementById("layerDetail").textContent = layer.dataset.detail;
+    });
+  });
+
+  const taskData = {
+    research: {
+      title: "新議題研究",
+      body: "適合搭配搜尋型 AI、通用 LLM、筆記工具。重點不是只找答案，而是要求來源、摘要、分歧觀點與待查問題。",
+      chips: ["Perplexity", "ChatGPT", "Claude", "Notebook"],
+      flow: "建議流程：搜尋與來源 -> 摘要 -> 爭點整理 -> 轉成行動問題。"
+    },
+    writing: {
+      title: "文章與簡報產出",
+      body: "適合用 LLM 整理觀點，再用簡報或設計工具轉成視覺化輸出。重點是先定義受眾、語氣、結構。",
+      chips: ["Claude", "ChatGPT", "Canva", "Google Slides"],
+      flow: "建議流程：素材整理 -> 大綱 -> 初稿 -> 視覺化 -> 人工校稿。"
+    },
+    analysis: {
+      title: "資料分析與方案比較",
+      body: "適合搭配試算表、程式執行、LLM 解釋。重點是讓 AI 說明假設、限制與可驗證的結論。",
+      chips: ["Sheets", "Python", "ChatGPT", "Claude"],
+      flow: "建議流程：資料清理 -> 指標定義 -> 分析 -> 解釋 -> 決策建議。"
+    },
+    workflow: {
+      title: "固定流程協作",
+      body: "適合把重複任務寫成 Skill。重點是讓 AI 知道觸發條件、步驟、輸入輸出與驗證規則。",
+      chips: ["Claude Code", "Codex", "Skills", "Markdown"],
+      flow: "建議流程：流程萃取 -> Skill 草稿 -> 測試 -> 修正 -> 重複使用。"
+    }
+  };
+
+  document.querySelectorAll("#taskList button").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#taskList button").forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+      const item = taskData[button.dataset.task];
+      document.getElementById("toolTitle").textContent = item.title;
+      document.getElementById("toolBody").textContent = item.body;
+      document.getElementById("toolFlow").textContent = item.flow;
+      document.getElementById("toolChips").innerHTML = item.chips.map(chip => "<span>" + chip + "</span>").join("");
+    });
+  });
+
+  function value(id) {
+    return document.getElementById(id).value.trim() || "[待填]";
+  }
+
+  document.getElementById("buildSkill").addEventListener("click", () => {
+    const name = value("qName");
+    const draft = `# ${name}
+
+## Description
+這個 Skill 負責：${value("q1")}
+
+## Trigger
+在以下情況啟動：${value("q2")}
+
+## Inputs
+${value("q3")}
+
+## Process
+${value("q4")}
+
+## Output
+${value("q5")}
+
+## Validation
+${value("q6")}
+
+## Composition
+前後流程：${value("q7")}
+`;
+    document.getElementById("skillOutput").textContent = draft;
+  });
+
+  document.getElementById("clearSkill").addEventListener("click", () => {
+    document.querySelectorAll("textarea").forEach(area => area.value = "");
+    document.getElementById("skillOutput").textContent = "填寫工作流卡後，可以在這裡產生一份 SKILL.md 草稿。";
+  });
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@
 > *不只是理論——包含為知識工作者設計的可安裝 Skills。*
 
 [![GitHub Pages](https://img.shields.io/badge/Explore-Interactive%20Architecture-6366f1?style=for-the-badge)](https://ahnchen1983.github.io/agentic-substrate/)
+[![Course](https://img.shields.io/badge/Open-Interactive%20Course-0f8f73?style=for-the-badge)](https://ahnchen1983.github.io/agentic-substrate/course.html)
 [![Start Here](https://img.shields.io/badge/Read-Start%20Here-0f766e?style=for-the-badge)](docs/START-HERE.md)
 [![Try Skills](https://img.shields.io/badge/Try-Installable%20Skills-f59e0b?style=for-the-badge)](QUICK-START.md)
 
@@ -45,6 +46,7 @@ If you have ever thought, "AI is useful, but I keep explaining the same work pro
 | If you want to... | Start here |
 |---|---|
 | Understand the big idea | [Start Here](docs/START-HERE.md) |
+| Explore the three-session course | [Interactive Course](course.html) |
 | Try your first Skill | [Quick Start](QUICK-START.md) |
 | See the architecture | [Five-Layer Model](docs/01-foundations/five-layer-model.md) |
 | Learn why Skills matter | [Skill Anatomy](docs/01-foundations/skill-anatomy.md) |
@@ -53,6 +55,7 @@ If you have ever thought, "AI is useful, but I keep explaining the same work pro
 | 如果你想要... | 從這裡開始 |
 |---|---|
 | 理解核心概念 | [Start Here](docs/START-HERE.md) |
+| 查看三堂課互動講義 | [Interactive Course](course.html) |
 | 立刻試第一個 Skill | [Quick Start](QUICK-START.md) |
 | 看完整架構 | [Five-Layer Model](docs/01-foundations/five-layer-model.md) |
 | 理解為什麼 Skill 重要 | [Skill Anatomy](docs/01-foundations/skill-anatomy.md) |
@@ -133,6 +136,7 @@ Agentic-Substrate/
 |-- README.md                          <-- You are here 你在這裡
 |-- llms.txt                           [published] AI-readable project map
 |-- AGENTS.md                          [published] Guidance for coding agents
+|-- course.html                        [published] Three-session interactive course
 |-- QUICK-START.md                     [published] 5-min guide to your first Skill
 |-- install.sh                         [published] One-command installer 一鍵安裝
 |-- ROADMAP.md                         <-- Development phases 發展路線圖
@@ -201,6 +205,8 @@ Agentic-Substrate/
 **Just want to try it?** -> [Quick Start - 5 Minutes to Your First Skill](QUICK-START.md)
 
 **Interactive visualization** -> [Explore the Five-Layer Model](index.html) *(deploy to GitHub Pages for the best experience)*
+
+**Three-session course** -> [Interactive Course](course.html)
 
 **New to this?** Start with -> [The Agentic Substrate: Core Architecture](docs/01-foundations/agentic-substrate.md)
 

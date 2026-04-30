@@ -31,11 +31,12 @@ Read in this order:
 閱讀順序建議：
 
 1. [README](../README.md) - what this repo is and why it exists.
-2. [Quick Start](../QUICK-START.md) - try the first Skill in five minutes.
-3. [Workflow to Skill Example](examples/workflow-to-skill.md) - see one concrete transformation.
-4. [You Already Know How to Build a Skill](04-curriculum/you-already-know.md) - especially if you are not an engineer.
-5. [Learning Path](04-curriculum/learning-path.md) - understand the path from chat to agents.
-6. [Five-Layer Model](01-foundations/five-layer-model.md) - see the full architecture.
+2. [Interactive Course](../course.html) - see the three-session course as an interactive deck.
+3. [Quick Start](../QUICK-START.md) - try the first Skill in five minutes.
+4. [Workflow to Skill Example](examples/workflow-to-skill.md) - see one concrete transformation.
+5. [You Already Know How to Build a Skill](04-curriculum/you-already-know.md) - especially if you are not an engineer.
+6. [Learning Path](04-curriculum/learning-path.md) - understand the path from chat to agents.
+7. [Five-Layer Model](01-foundations/five-layer-model.md) - see the full architecture.
 
 ---
 
