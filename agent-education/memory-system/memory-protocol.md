@@ -252,6 +252,25 @@ steps:
   6_update_index:
     file: memory/memory-index.md
     when: New files were added or structure changed
+
+  7_validate:
+    action: Verify memory files were actually written to disk
+    when: Always (before ending session)
+    checks:
+      - "DAILY.md was updated (not just mentioned in chat)"
+      - "Session log file exists at memory/sessions/YYYY-MM-DD-topic.md"
+      - "Decision files exist at memory/decisions/NNN-topic.md (if any decisions were made)"
+      - "All files were committed to Git"
+    rule: |
+      CRITICAL: Memory must be written to FILES, not just described in conversation.
+      The chat history is volatile. Only files persist.
+      If you described a decision or session log in chat but didn't write it to a file,
+      write it NOW before ending the session.
+
+      關鍵：記憶必須寫入檔案，不能只在對話中描述。
+      對話歷史是易失的。只有檔案才持久。
+      如果你在對話中描述了決策或工作紀錄，但沒有寫入檔案，
+      在結束工作階段前立刻寫入。
 ```
 
 ---
@@ -449,6 +468,8 @@ If your existing memory system and this protocol disagree:
 | Partial initialization 部分初始化 | Agent creates some directories but not all, then can't write | Run First-Run Initialization to create ALL directories at once |
 | Duplicate memory files 重複記憶檔案 | Agent creates new SOUL.md when one already exists | Check for existing files before creating; integrate, don't duplicate |
 | Vague next actions 模糊的下一步 | DAILY.md says "awaiting instructions" or "nothing planned" | Write at least one concrete next step, even if it's "Review session log for improvement areas" |
+| Overwriting SOUL.md per task 每次任務覆寫 SOUL.md | Agent changes SOUL.md role for each task | SOUL.md is permanent identity. Task-specific context goes in DAILY.md "Current Task Context" |
+| Chat-only memory 只在對話中寫記憶 | Agent describes decisions/session log in chat but doesn't write to files | Session End step 7 (validate) — check files were actually written |
 
 ---
 
@@ -547,6 +568,33 @@ This section is updated as agents test this protocol in real scenarios.
 **Key insight**: The number of protocols an agent reads directly correlates with the quality of its behavior. An agent that reads only Memory Protocol will write memory. An agent that reads all 6 protocols will **think like an agent** — self-locate, select patterns, validate outputs, and write structured memory.
 
 **關鍵洞見**：Agent 讀取的協議數量直接影響它的行為品質。只讀 Memory Protocol 的 Agent 會寫記憶。讀完全部 6 個協議的 Agent 會**像 Agent 一樣思考**——自我定位、選擇模式、驗證輸出、寫結構化記憶。
+
+### OpenClaw Real-World Test (2026-05-01)
+
+**Agent**: OpenClaw
+**Scenario**: Write a blog post about Agentic Substrate using Memory Protocol to manage the process
+
+**What worked:**
+- Used Memory Protocol naturally while doing real work (not simulation)
+- Made 6 decisions and recorded them with context, options, and rationale
+- Updated DAILY.md mid-task (twice), not just at session end
+- Blog post quality was high — covered five-layer model, Skills, Memory Protocol, Learning Path
+
+**What needed improvement:**
+- Decisions described in chat but NOT written to `memory/decisions/` files
+- Session log mentioned but not written to `memory/sessions/` file
+- SOUL.md overwritten with task-specific role ("Technical Writer") — should have been in DAILY.md
+
+**Changes made based on this test:**
+- Added step 7 (validate) to Session End Protocol — verify files were actually written to disk
+- Updated SOUL.md template with "DO NOT overwrite" warning
+- Updated DAILY.md template with "Current Task Context" section for task-specific roles
+- Added "Overwriting SOUL.md per task" anti-pattern
+- Added "Chat-only memory" anti-pattern
+
+**Key insight**: Agents will naturally describe their memory in chat but may not write it to files. The protocol needs a validation step that says "if you described it in chat, write it to a file too."
+
+**關鍵洞見**：Agent 會自然地在對話中描述記憶，但不一定寫入檔案。協議需要一個驗證步驟：「如果你在對話中描述了，也要寫入檔案。」
 
 ---
 

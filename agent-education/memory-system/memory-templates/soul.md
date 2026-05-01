@@ -2,6 +2,12 @@
 
 > Read once at session start. Rarely changes.
 > 工作階段開始時讀取一次。很少改變。
+>
+> **DO NOT overwrite this file for each task.** SOUL.md is the agent's permanent identity.
+> Task-specific context goes in DAILY.md under "Current Task Context."
+>
+> **不要每次任務都覆寫這個檔案。** SOUL.md 是 Agent 的永久身份。
+> 任務相關的上下文放在 DAILY.md 的「Current Task Context」區塊。
 
 ## Identity 身份
 
