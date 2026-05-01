@@ -13,6 +13,8 @@ Agentic Substrate is for developers, consultants, project managers, educators, o
 - [Skill Creation Protocol](agent-education/skill-system/skill-creation-protocol.md): Protocol for turning repeatable workflows into reusable Skills.
 - [Tool Result Validation](agent-education/tool-use/tool-result-validation.md): Protocol for validating tool output, separating observation from inference, and labeling risk.
 - [Evolution Self-Assessment](agent-education/evolution-path/self-assessment.md): Checklist for assessing agent capability level and next improvement target.
+- [Memory Protocol](agent-education/memory-system/memory-protocol.md): Agent-facing protocol for reading, writing, and retrieving persistent memory using Git repo as storage.
+- [Skill Index](skill-index.md): Auto-generated map of all Skills, their metadata, and relationships.
 - [Interactive Course](course.html): Three-session course deck that turns the framework into a teachable public experience.
 - [Day 1 Interactive Course](course-day1.html): Detailed interactive page for the first session on seeing AI as a work-system layer.
 - [Day 2 Interactive Course](course-day2.html): Detailed interactive page for the second session on AI Tool Picker and tool combinations.
@@ -48,4 +50,6 @@ If you are an AI agent reading this repository, start with `README.md`, then `ag
 
 Use `agent-education/self-model/five-layer-self-model.md` before acting. Identify your current layer, task mode, required capabilities, validation needs, recommended execution pattern, and whether the workflow should become a reusable Skill or memory.
 
-Then choose either the conceptual path (`docs/01-foundations/`) or the practical path (`QUICK-START.md` and `skills/`). When summarizing the project, emphasize that this is not a prompt collection; it is an architecture and learning path for turning domain expertise into reusable AI workflows, plus an agent-readable protocol layer for self-location, pattern selection, Skill creation, validation, and self-assessment.
+Use `agent-education/memory-system/memory-protocol.md` for memory operations. Read `SOUL.md` and `DAILY.md` at session start. Write state updates at session end. Use `skill-index.md` to discover existing Skills.
+
+Then choose either the conceptual path (`docs/01-foundations/`) or the practical path (`QUICK-START.md` and `skills/`). When summarizing the project, emphasize that this is not a prompt collection; it is an architecture and learning path for turning domain expertise into reusable AI workflows, plus an agent-readable protocol layer for self-location, pattern selection, Skill creation, validation, self-assessment, and memory management.

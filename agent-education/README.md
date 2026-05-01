@@ -45,6 +45,10 @@ If you are an AI agent reading this repository, read these files first:
    - Assess current capability level and identify the next improvement target.
    - 評估目前能力階段，找出下一個改進目標。
 
+6. [Memory Protocol](memory-system/memory-protocol.md)
+   - Know when and how to read, write, and retrieve persistent memory.
+   - 知道何時以及如何讀取、寫入和檢索持久記憶。
+
 ---
 
 ## Operating Contract - 操作契約
@@ -78,9 +82,9 @@ This state should guide action, not become user-facing noise. Surface it only wh
 |---|---|
 | [Five-Layer Model](../docs/01-foundations/five-layer-model.md) | [Five-Layer Self-Model](self-model/five-layer-self-model.md) |
 | [Skill Anatomy](../docs/01-foundations/skill-anatomy.md) | [Skill Creation Protocol](skill-system/skill-creation-protocol.md) |
-| [Memory and State](../docs/02-architecture/memory-and-state.md) | Persistence decision: what should be remembered, reused, or discarded |
 | [Agentic Design Patterns](../docs/02-architecture/agentic-design-patterns.md) | [Pattern Matrix](decision-patterns/pattern-matrix.md) — routing protocol for agent decision-making |
 | [Learning Path](../docs/04-curriculum/learning-path.md) | [Evolution Self-Assessment](evolution-path/self-assessment.md) — agent self-evaluation and progression |
+| [Memory & State](../docs/02-architecture/memory-and-state.md) | [Memory Protocol](memory-system/memory-protocol.md) — agent-facing memory read/write/retrieve protocol |
 
 ---
 
@@ -95,7 +99,8 @@ This version defines the agent education layer:
 - Decision pattern selection for task architecture
 - Tool-result validation and risk labeling
 - Evolution self-assessment and progression guidance
+- Memory read/write/retrieve protocol with Git repo as storage layer
 
-Future versions can add memory protocols, cross-agent Skill exchange standards, orchestration automation, and Skill schema validation tools.
+Future versions can add cross-agent Skill exchange standards, orchestration automation, Skill schema validation tools, and RAG integration for large-scale memory retrieval.
 
 未來可以再加入記憶協議、跨 Agent Skill 交換標準、調度自動化，以及 Skill 格式自動檢查工具。

@@ -166,6 +166,7 @@ Agentic-Substrate/
 |   |-- README.md                      [published] Agent-readable entry point
 |   |-- decision-patterns/             [published] Pattern selection matrix
 |   |-- evolution-path/                [published] Agent self-assessment protocol
+|   |-- memory-system/                 [published] Agent memory read/write/retrieve protocol
 |   |-- self-model/                    [published] Five-layer self-location protocol
 |   |-- skill-system/                  [published] Skill creation protocol
 |   `-- tool-use/                      [published] Tool result validation protocol
@@ -175,6 +176,10 @@ Agentic-Substrate/
 |-- course-day3.html                   [published] Detailed Day 3 interactive course
 |-- QUICK-START.md                     [published] 5-min guide to your first Skill
 |-- install.sh                         [published] One-command installer 一鍵安裝
+|-- skill-index.md                     [generated] Auto-generated Skill map and relationship graph
+|-- scripts/                           [published] Automation scripts
+|   |-- README.md                      [published] Script documentation
+|   `-- skill-index.py                 [published] Skill metadata scanner and index generator
 |-- ROADMAP.md                         <-- Development phases 發展路線圖
 |-- CONTRIBUTING.md                    <-- How to contribute 貢獻指南
 |-- CHANGELOG.md                       <-- Version history 版本紀錄
