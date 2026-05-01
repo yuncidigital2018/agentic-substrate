@@ -20,6 +20,7 @@ function show(index) {
     slides[current].scrollTop = 0;
     slides[current].scrollLeft = 0;
   }
+  window.scrollTo(0, 0);
   if (dots) dots.querySelectorAll(".dot").forEach((dot, i) => dot.classList.toggle("active", i === current));
   if (counter) counter.textContent = (current + 1) + " / " + slides.length;
 }
@@ -52,5 +53,29 @@ document.addEventListener("keydown", event => {
     show(current - 1);
   }
 });
+
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartedOnControl = false;
+
+document.addEventListener("touchstart", event => {
+  const touch = event.changedTouches[0];
+  if (!touch) return;
+  touchStartedOnControl = Boolean(event.target?.closest?.("a, button, input, textarea, select"));
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+}, { passive: true });
+
+document.addEventListener("touchend", event => {
+  if (touchStartedOnControl) return;
+  const touch = event.changedTouches[0];
+  if (!touch) return;
+  const deltaX = touch.clientX - touchStartX;
+  const deltaY = touch.clientY - touchStartY;
+  const isHorizontalSwipe = Math.abs(deltaX) > 56 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
+  if (!isHorizontalSwipe) return;
+  if (deltaX < 0) show(current + 1);
+  if (deltaX > 0) show(current - 1);
+}, { passive: true });
 
 show(0);

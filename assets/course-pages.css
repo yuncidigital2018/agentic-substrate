@@ -13,7 +13,7 @@
   --rose: #bd4d68;
   --dark: #101b18;
 }
-html, body { margin: 0; min-height: 100%; }
+html, body { margin: 0; min-height: 100%; overflow-x: hidden; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif;
   background:
@@ -34,13 +34,15 @@ a { color: inherit; }
   overflow-y: auto;
   overscroll-behavior: contain;
   scroll-padding: 72px 0 88px;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 .slide.active { display: flex; animation: enter 0.25s ease; }
 @keyframes enter {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.inner { width: min(1180px, 100%); margin: auto; }
+.inner { width: min(1180px, 100%); min-width: 0; margin: auto; }
 .kicker {
   display: inline-flex;
   align-items: center;
@@ -66,6 +68,8 @@ h1 {
   line-height: 1.1;
   letter-spacing: 0;
   font-weight: 850;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 h2 {
   font-size: clamp(30px, 4.2vw, 52px);
@@ -73,6 +77,8 @@ h2 {
   letter-spacing: 0;
   font-weight: 820;
   margin-bottom: 22px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 h3 { font-size: clamp(18px, 2vw, 24px); line-height: 1.35; margin-bottom: 10px; }
 p, li { color: var(--muted); font-size: clamp(15px, 1.35vw, 19px); line-height: 1.75; }
@@ -260,8 +266,17 @@ textarea { min-height: 70px; resize: vertical; }
 @media (max-width: 860px) {
   body { overflow: auto; }
   .deck { height: auto; min-height: 100vh; }
-  .slide { position: relative; min-height: 100vh; padding: 70px 20px 86px; }
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    padding: 70px 20px 86px;
+    overflow: visible;
+  }
+  .slide.active { display: block; }
   .slide:not(.active) { display: none; }
+  .inner { width: min(100%, 520px); margin: 0 auto; }
+  h1 { width: 100%; font-size: 32px; line-height: 1.18; word-break: break-all; }
+  h2 { width: 100%; font-size: 30px; line-height: 1.22; word-break: break-all; }
   .grid, .grid.two, .form-grid { grid-template-columns: 1fr; }
   .dots { display: none; }
 }

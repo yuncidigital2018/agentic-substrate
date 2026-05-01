@@ -25,7 +25,7 @@
     --shadow: 0 18px 50px rgba(24, 49, 43, 0.14);
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; min-height: 100%; }
+  html, body { margin: 0; min-height: 100%; overflow-x: hidden; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif;
     background: var(--bg);
@@ -51,6 +51,8 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     scroll-padding: 72px 0 88px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
   .slide.active { display: flex; animation: in 0.28s ease; }
   @keyframes in {
@@ -59,6 +61,7 @@
   }
   .slide-inner {
     width: min(1180px, 100%);
+    min-width: 0;
     margin: auto;
   }
   .kicker {
@@ -86,6 +89,8 @@
     line-height: 1.08;
     letter-spacing: 0;
     font-weight: 850;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   h2 {
     font-size: clamp(30px, 4.2vw, 54px);
@@ -93,6 +98,8 @@
     letter-spacing: 0;
     font-weight: 820;
     margin-bottom: 22px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   h3 {
     font-size: clamp(18px, 2vw, 24px);
@@ -417,8 +424,17 @@
   @media (max-width: 850px) {
     body { overflow: auto; }
     .deck { height: auto; min-height: 100vh; }
-    .slide { position: relative; min-height: 100vh; padding: 70px 22px 84px; }
+    .slide {
+      position: relative;
+      min-height: 100vh;
+      padding: 70px 22px 84px;
+      overflow: visible;
+    }
+    .slide.active { display: block; }
     .slide:not(.active) { display: none; }
+    .slide-inner { width: min(100%, 520px); margin: 0 auto; }
+    h1 { width: 100%; font-size: 32px; line-height: 1.18; word-break: break-all; }
+    h2 { width: 100%; font-size: 30px; line-height: 1.22; word-break: break-all; }
     .grid, .grid.two, .timeline, .tool-board, .worksheet { grid-template-columns: 1fr; }
     .day { border-right: 0; border-bottom: 1px solid var(--line); min-height: auto; }
     .day:last-child { border-bottom: 0; }
@@ -732,6 +748,7 @@
       slides[current].scrollTop = 0;
       slides[current].scrollLeft = 0;
     }
+    window.scrollTo(0, 0);
     dots.querySelectorAll(".dot").forEach((dot, i) => dot.classList.toggle("active", i === current));
     counter.textContent = (current + 1) + " / " + slides.length;
   }
@@ -764,6 +781,30 @@
       show(current - 1);
     }
   });
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartedOnControl = false;
+
+  document.addEventListener("touchstart", event => {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    touchStartedOnControl = Boolean(event.target?.closest?.("a, button, input, textarea, select"));
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  }, { passive: true });
+
+  document.addEventListener("touchend", event => {
+    if (touchStartedOnControl) return;
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    const isHorizontalSwipe = Math.abs(deltaX) > 56 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
+    if (!isHorizontalSwipe) return;
+    if (deltaX < 0) show(current + 1);
+    if (deltaX > 0) show(current - 1);
+  }, { passive: true });
 
   document.querySelectorAll(".layer").forEach(layer => {
     layer.addEventListener("click", () => {
