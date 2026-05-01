@@ -47,6 +47,9 @@ If you have ever thought, "AI is useful, but I keep explaining the same work pro
 |---|---|
 | Understand the big idea | [Start Here](docs/START-HERE.md) |
 | Explore the three-session course | [Interactive Course](course.html) |
+| Open the detailed Day 1 course | [Day 1 Interactive Page](course-day1.html) |
+| Open the detailed Day 2 course | [Day 2 Interactive Page](course-day2.html) |
+| Open the detailed Day 3 course | [Day 3 Interactive Page](course-day3.html) |
 | Try your first Skill | [Quick Start](QUICK-START.md) |
 | See the architecture | [Five-Layer Model](docs/01-foundations/five-layer-model.md) |
 | Learn why Skills matter | [Skill Anatomy](docs/01-foundations/skill-anatomy.md) |
@@ -56,6 +59,9 @@ If you have ever thought, "AI is useful, but I keep explaining the same work pro
 |---|---|
 | 理解核心概念 | [Start Here](docs/START-HERE.md) |
 | 查看三堂課互動講義 | [Interactive Course](course.html) |
+| 查看 Day 1 詳細互動頁 | [Day 1 Interactive Page](course-day1.html) |
+| 查看 Day 2 詳細互動頁 | [Day 2 Interactive Page](course-day2.html) |
+| 查看 Day 3 詳細互動頁 | [Day 3 Interactive Page](course-day3.html) |
 | 立刻試第一個 Skill | [Quick Start](QUICK-START.md) |
 | 看完整架構 | [Five-Layer Model](docs/01-foundations/five-layer-model.md) |
 | 理解為什麼 Skill 重要 | [Skill Anatomy](docs/01-foundations/skill-anatomy.md) |
@@ -137,6 +143,9 @@ Agentic-Substrate/
 |-- llms.txt                           [published] AI-readable project map
 |-- AGENTS.md                          [published] Guidance for coding agents
 |-- course.html                        [published] Three-session interactive course
+|-- course-day1.html                   [published] Detailed Day 1 interactive course
+|-- course-day2.html                   [published] Detailed Day 2 interactive course
+|-- course-day3.html                   [published] Detailed Day 3 interactive course
 |-- QUICK-START.md                     [published] 5-min guide to your first Skill
 |-- install.sh                         [published] One-command installer 一鍵安裝
 |-- ROADMAP.md                         <-- Development phases 發展路線圖
@@ -147,6 +156,7 @@ Agentic-Substrate/
 |
 |-- docs/
 |   |-- START-HERE.md                  [published] First reading path for humans and agents
+|   |-- course-planning-notes.md       [published] Planning notes for the three-session course
 |   |-- examples/                      [published] Concrete workflow-to-Skill examples
 |   |-- 01-foundations/                <-- Core Concepts 核心概念
 |   |   |-- agentic-substrate.md       [published] The Core Architecture 核心架構文件

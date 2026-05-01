@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2｜AI 工具的選擇與搭配</title>
+<meta name="description" content="Day 2 interactive course deck: choose AI tool combinations with AI Tool Picker.">
+<link rel="stylesheet" href="assets/course-pages.css">
+</head>
+<body>
+<main class="deck">
+  <section class="slide active">
+    <div class="inner">
+      <div class="kicker">Day 2 - 115/05/15</div>
+      <h1>AI 工具的選擇與搭配：選對使用方式</h1>
+      <p class="lead" style="margin-top:22px;">今天不背工具清單，而是學一套決策框架。工具會變，決策邏輯不變。</p>
+      <div class="meta"><span class="pill">10:00-12:00</span><span class="pill">趨勢講座</span><span class="pill">你在設計系統</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Run of Show</div>
+      <h2>Day 2 精簡版節奏</h2>
+      <div class="run">
+        <div class="time">0-5</div><div>安全紅線複誦 + Day 1 回顧</div>
+        <div class="time">5-30</div><div>AI Tool Picker：三問框架</div>
+        <div class="time">30-60</div><div>工具組合案例：3 個精選</div>
+        <div class="time">60-100</div><div>反向挑戰實作：充裕試作時間</div>
+        <div class="time">100-120</div><div>Day 3 預告：從工具組合到 Skill</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">AI Tool Picker</div>
+      <h2>三問框架：不用記工具，先判斷任務</h2>
+      <div class="form-grid">
+        <div class="field"><label>1. 這是探索還是生產？</label><select id="qType" class="btn" style="width:100%;"><option value="explore">探索：還在找答案</option><option value="produce">生產：知道要產出什麼</option></select></div>
+        <div class="field"><label>2. 需要最新資訊嗎？</label><select id="qFresh" class="btn" style="width:100%;"><option value="yes">需要</option><option value="no">不需要</option></select></div>
+        <div class="field"><label>3. 複雜長流程嗎？</label><select id="qFlow" class="btn" style="width:100%;"><option value="yes">是，多步驟/多工具</option><option value="no">否，單一任務</option></select></div>
+        <div class="field"><label>我的任務</label><input id="taskName" placeholder="例如：整理 50 份客戶回饋"></div>
+      </div>
+      <div class="actions"><button class="btn primary" id="pickTool">產生建議工具組合</button></div>
+      <pre class="output" id="toolOutput">選好三個答案後，這裡會產生工具組合建議。</pre>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Case Library</div>
+      <h2>工具組合案例庫：看別人怎麼串接</h2>
+      <div class="tabs" id="caseTabs">
+        <button class="tab active" data-case="meeting">會議紀錄</button>
+        <button class="tab" data-case="local">地方體驗</button>
+        <button class="tab" data-case="feedback">客戶回饋</button>
+      </div>
+      <div class="grid two">
+        <div class="panel green"><h3 id="caseTitle">會議紀錄 -> 行動項目 -> 跟進信</h3><p id="caseText">逐字稿進 Claude / ChatGPT，先擷取決議與待辦，再生成團隊跟進信。最後由人確認責任人與期限。</p></div>
+        <div class="code" id="caseFlow">Claude 擷取 -> Claude 寫信 -> 人類確認 -> Gmail / Outlook 發送</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Reverse Challenge</div>
+      <h2>反向挑戰：先不用 AI，你會怎麼做？</h2>
+      <div class="grid">
+        <div class="panel green"><h3>Step 1</h3><p>不用 AI，你會怎麼完成這件事？列出笨方法也可以。</p></div>
+        <div class="panel amber"><h3>Step 2</h3><p>哪些環節重複性高、容易卡住、最花時間？</p></div>
+        <div class="panel blue"><h3>Step 3</h3><p>哪些地方適合用 AI？哪些地方仍需人類判斷？</p></div>
+      </div>
+      <div class="note">重點：最大的浪費，是用 AI 做不值得做的事。先理解流程，再決定工具。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Task Cards</div>
+      <h2>三張任務卡：小組選一張</h2>
+      <div class="grid">
+        <div class="panel green"><h3>A. 青年創業融資簡報</h3><p>30 分鐘投資人會面，10-15 頁簡報，需研究、結構、視覺化與覆核。</p></div>
+        <div class="panel amber"><h3>B. 社區老人陪伴活動</h3><p>地方創生場景：活動企劃、宣傳文案、子女溝通信件、報名系統。</p></div>
+        <div class="panel blue"><h3>C. 50 份客戶意見分析</h3><p>找出最常見的 3 個問題，提出改善方案，做成報告。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Trap Warning</div>
+      <h2>哪些任務不適合直接交給 AI？</h2>
+      <div class="grid">
+        <div class="panel rose"><h3>未脫敏資料</h3><p>客戶個資、公司機密、真實合約資料不要直接貼。</p></div>
+        <div class="panel rose"><h3>無法驗證的輸出</h3><p>你不知道對錯，就不該直接採用。</p></div>
+        <div class="panel rose"><h3>高風險決策</h3><p>法律、醫療、財務不能完全交給 AI。</p></div>
+        <div class="panel amber"><h3>成本倒掛</h3><p>Prompt 設定比人工執行還久，就不值得。</p></div>
+        <div class="panel amber"><h3>敏感關係</h3><p>需要信任、同理、承諾的場景，人要站前面。</p></div>
+        <div class="panel green"><h3>判斷原則</h3><p>AI 可以輔助，但人類負責決策與關係。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Closing</div>
+      <h2>Day 3 預告：怎麼讓工具組合下次也能用？</h2>
+      <p class="lead">今天你知道怎麼選工具了。明天要把工具組合文件化、標準化、可複用化，變成一張 AI 能真的執行的工作流卡。</p>
+      <div class="note">核心句：工具會變，決策邏輯不變。</div>
+    </div>
+  </section>
+</main>
+<div class="counter" id="counter">1 / 8</div>
+<div class="dots" id="dots"></div>
+<div class="nav"><a href="course.html">H</a><button id="prev">‹</button><button id="next">›</button></div>
+<script src="assets/course-pages.js"></script>
+<script>
+document.getElementById("pickTool").addEventListener("click", () => {
+  const type = document.getElementById("qType").value;
+  const fresh = document.getElementById("qFresh").value;
+  const flow = document.getElementById("qFlow").value;
+  const task = document.getElementById("taskName").value || "我的任務";
+  let tools = "Claude / ChatGPT";
+  if (fresh === "yes") tools = "ChatGPT 網頁搜尋 / Gemini / Perplexity";
+  if (flow === "yes" && fresh === "yes") tools = "Perplexity 或 Gemini 查資料 -> Claude 結構化 -> 人類覆核 -> 表單/文件工具產出";
+  if (flow === "yes" && fresh === "no") tools = "Claude / ChatGPT 結構化 -> Notion/Sheets 管理 -> Zapier/n8n 自動化候選";
+  if (type === "produce" && flow === "no") tools = "Claude / ChatGPT 單工具即可，重點是給清楚輸入與輸出格式";
+  document.getElementById("toolOutput").textContent = `任務：${task}
+
+建議工具組合：
+${tools}
+
+人工覆核點：
+- 資料是否可靠
+- 輸出是否符合真實情境
+- 是否有機密資料風險
+- 最後決策是否由人負責`;
+});
+
+const cases = {
+  meeting: ["會議紀錄 -> 行動項目 -> 跟進信", "逐字稿進 Claude / ChatGPT，先擷取決議與待辦，再生成團隊跟進信。最後由人確認責任人與期限。", "Claude 擷取 -> Claude 寫信 -> 人類確認 -> Gmail / Outlook 發送"],
+  local: ["5 天 4 夜旅程規劃 + 報名表單", "地方創生案例：先設計行程，再產生報名欄位與宣傳文案。適合小農、社區活動、青年提案。", "Claude 設計行程 -> Gemini Canvas / Google Form 做表單 -> Claude 寫文案"],
+  feedback: ["客戶回饋問卷 + AI 聚類分析", "先設計不誘導的問卷，再把回饋聚類成問題主題，最後產出改善優先順序。", "Claude 設計問卷 -> 表單收集 -> Claude 聚類分析 -> Claude 寫 CEO 報告"]
+};
+document.querySelectorAll("#caseTabs .tab").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("#caseTabs .tab").forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    document.getElementById("caseTitle").textContent = cases[button.dataset.case][0];
+    document.getElementById("caseText").textContent = cases[button.dataset.case][1];
+    document.getElementById("caseFlow").textContent = cases[button.dataset.case][2];
+  });
+});
+</script>
+</body>
+</html>

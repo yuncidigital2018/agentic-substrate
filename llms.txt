@@ -8,6 +8,10 @@ Agentic Substrate is for developers, consultants, project managers, educators, o
 
 - [README](README.md): Project overview, core thesis, repo structure, and entry points.
 - [Interactive Course](course.html): Three-session course deck that turns the framework into a teachable public experience.
+- [Day 1 Interactive Course](course-day1.html): Detailed interactive page for the first session on seeing AI as a work-system layer.
+- [Day 2 Interactive Course](course-day2.html): Detailed interactive page for the second session on AI Tool Picker and tool combinations.
+- [Day 3 Interactive Course](course-day3.html): Detailed interactive page for the third session on workflow cards, Skill extraction, and live execution.
+- [Course Planning Notes](docs/course-planning-notes.md): Teaching design reminders, commercial value, and Day 1/2/3 course improvements.
 - [Quick Start](QUICK-START.md): Five-minute path to trying the first Skill.
 - [Start Here](docs/START-HERE.md): Short guide for humans and AI agents deciding what to read first.
 - [Core Architecture](docs/01-foundations/agentic-substrate.md): The main Agentic Substrate thesis and architecture.

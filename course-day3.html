@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3｜AI 生成靈魂融入日常</title>
+<meta name="description" content="Day 3 interactive course deck: turn work methods into reusable AI workflow cards.">
+<link rel="stylesheet" href="assets/course-pages.css">
+</head>
+<body>
+<main class="deck">
+  <section class="slide active">
+    <div class="inner">
+      <div class="kicker">Day 3 - 115/05/16</div>
+      <h1>AI 生成靈魂融入日常：把自己的方法交給協作</h1>
+      <p class="lead" style="margin-top:22px;">今天是簽名時刻：把你的工作方法寫成卡片，現場讓 AI 跑起來。</p>
+      <div class="meta"><span class="pill">10:00-12:00</span><span class="pill">實作工作坊</span><span class="pill">你成為系統架構師</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Run of Show</div>
+      <h2>從知道，到做到</h2>
+      <div class="run">
+        <div class="time">0-5</div><div>安全紅線儀式 + Day 1-2 回顧</div>
+        <div class="time">5-35</div><div>七問 Skill 萃取框架工作坊</div>
+        <div class="time">35-80</div><div>現場跑卡儀式：v1 -> v2 -> Automation</div>
+        <div class="time">80-105</div><div>90 天落地計畫設計工作坊</div>
+        <div class="time">105-120</div><div>結業儀式 + 社群銜接</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Seven Questions</div>
+      <h2>七問框架：把工作方法變成 AI Skill</h2>
+      <div class="grid">
+        <div class="panel green"><h3>定義邊界</h3><p>Q1 這是什麼工作？誰用？什麼場景？<br>Q2 成功標準是什麼？</p></div>
+        <div class="panel amber"><h3>拆解流程</h3><p>Q3 需要什麼輸入？<br>Q4 中間有幾個關鍵步驟？</p></div>
+        <div class="panel blue"><h3>設定檢查點</h3><p>Q5 最容易出錯在哪？<br>Q6 人要檢查什麼？<br>Q7 三個月後怎麼改進？</p></div>
+      </div>
+      <div class="note">七問不是給 AI 看的，而是訓練你把隱性經驗說清楚。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Skill Card Builder</div>
+      <h2>我的 Skill 卡</h2>
+      <div class="form-grid">
+        <div class="field"><label>Skill 名稱</label><input id="name" placeholder="例如：會議智能助理"></div>
+        <div class="field"><label>Q1 定義：什麼工作？誰用？什麼場景？</label><textarea id="q1"></textarea></div>
+        <div class="field"><label>Q2 成功標準：怎麼知道做好了？</label><textarea id="q2"></textarea></div>
+        <div class="field"><label>Q3 輸入：需要什麼資訊？</label><textarea id="q3"></textarea></div>
+        <div class="field"><label>Q4 流程：主要步驟？</label><textarea id="q4"></textarea></div>
+        <div class="field"><label>Q5 風險：最容易出錯在哪？</label><textarea id="q5"></textarea></div>
+        <div class="field"><label>Q6 檢查點：我親自檢查什麼？</label><textarea id="q6"></textarea></div>
+        <div class="field"><label>Q7 迭代：三個月後怎麼改進？</label><textarea id="q7"></textarea></div>
+      </div>
+      <div class="actions"><button class="btn primary" id="build">產生 Skill 卡</button><button class="btn" id="clear">清空</button></div>
+      <pre class="output" id="out">填寫七問後，這裡會產生可丟給 AI 的 Skill 卡草稿。</pre>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Signature Moment</div>
+      <h2>現場跑卡儀式：讓卡片活起來</h2>
+      <div class="grid">
+        <div class="panel green"><h3>第一張：簡單通用</h3><p>會議紀錄 -> 行動清單。展示 v1 有缺陷，v2 如何透過 Prompt 調整改善。</p></div>
+        <div class="panel amber"><h3>第二張：中等複雜</h3><p>顧客回饋 -> 改進建議。讓學員參與發現問題與優化。</p></div>
+        <div class="panel blue"><h3>第三張：人 AI 協作</h3><p>展示多步驟執行、人工檢查點與最終輸出。</p></div>
+      </div>
+      <div class="note">心理轉變：從「AI 很神奇」到「AI 是工具，我可以調教」。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Prompt Iteration</div>
+      <h2>v1 -> v2：看見版本迭代</h2>
+      <div class="grid two">
+        <div class="panel rose"><h3>v1 簡單版</h3><div class="code">你是會議助理。讀這段會議紀錄，列出 3-5 項主要行動項，包括：行動內容、責任人、deadline。</div></div>
+        <div class="panel green"><h3>v2 加強版</h3><div class="code">只列出會議上「明確決定要做」的項目，不包括正在討論或未來可能的想法。責任人沒有明確同意，標記為待確認。</div></div>
+      </div>
+      <div class="note">重點不是 Prompt 寫很長，而是把 Q5 風險和 Q6 檢查點寫進去。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">90 Days</div>
+      <h2>90 天落地計畫：從課堂變成習慣</h2>
+      <table class="table">
+        <tr><th>階段</th><th>行動</th><th>目的</th></tr>
+        <tr><td>Days 1-30</td><td>選 3 個重複工作流，為每個寫一張卡，至少跑一次</td><td>建立基礎</td></tr>
+        <tr><td>Days 31-60</td><td>每週執行一次，記錄失敗案例，修改 Prompt v1 -> v2</td><td>持續調整</td></tr>
+        <tr><td>Days 61-90</td><td>標準化 1 個 Skill，分享給同事或同儕，收集回饋</td><td>系統化與擴散</td></tr>
+      </table>
+      <div class="note">90 天之後，Skill 就不只是個人工具，而是團隊資產。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Community</div>
+      <h2>結業不是再見，而是開始</h2>
+      <div class="grid">
+        <div class="panel green"><h3>30 天挑戰 1</h3><p>上課後 7 天內，分享你的第一張 Skill 卡。</p></div>
+        <div class="panel amber"><h3>30 天挑戰 2</h3><p>記錄一次失敗案例：AI 錯在哪？你怎麼修？</p></div>
+        <div class="panel blue"><h3>30 天挑戰 3</h3><p>教會 1 個同事使用你的 Skill。</p></div>
+      </div>
+      <div class="note">最後收束：你不會是一個人走。社群、診所、案例庫，會讓工作流持續進化。</div>
+    </div>
+  </section>
+</main>
+<div class="counter" id="counter">1 / 8</div>
+<div class="dots" id="dots"></div>
+<div class="nav"><a href="course.html">H</a><button id="prev">‹</button><button id="next">›</button></div>
+<script src="assets/course-pages.js"></script>
+<script>
+function val(id) { return document.getElementById(id).value.trim() || "[待填]"; }
+document.getElementById("build").addEventListener("click", () => {
+  document.getElementById("out").textContent = `[Skill Card] ${val("name")}
+
+Q1 定義
+${val("q1")}
+
+Q2 成功標準
+${val("q2")}
+
+Q3 輸入
+${val("q3")}
+
+Q4 流程
+${val("q4")}
+
+Q5 風險
+${val("q5")}
+
+Q6 檢查點
+${val("q6")}
+
+Q7 迭代
+${val("q7")}`;
+});
+document.getElementById("clear").addEventListener("click", () => {
+  document.querySelectorAll("textarea,input").forEach(el => el.value = "");
+  document.getElementById("out").textContent = "填寫七問後，這裡會產生可丟給 AI 的 Skill 卡草稿。";
+});
+</script>
+</body>
+</html>
