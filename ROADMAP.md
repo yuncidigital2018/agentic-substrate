@@ -137,6 +137,47 @@ Practical, hands-on guides for each level of the Learning Path.
 
 ---
 
+## Phase 3.5: Agent Education Layer ── Agent 教育層 ✅
+
+**Goal 目標**: Build agent-facing protocols that let any AI agent read the repo and operate autonomously — self-locate, create Skills, manage memory, select patterns, and validate outputs.
+
+建構面向 Agent 的協議，讓任何 AI Agent 讀取 repo 後能自主運作——自我定位、建立 Skill、管理記憶、選擇模式、驗證輸出。
+
+| Item 項目 | Status 狀態 |
+|---|---|
+| Five-Layer Self-Model (`agent-education/self-model/`) | ✅ Done |
+| Skill Creation Protocol (`agent-education/skill-system/`) | ✅ Done |
+| Tool Result Validation (`agent-education/tool-use/`) | ✅ Done |
+| Decision Pattern Matrix (`agent-education/decision-patterns/`) | ✅ Done |
+| Evolution Self-Assessment (`agent-education/evolution-path/`) | ✅ Done |
+| Memory Protocol (`agent-education/memory-system/`) | ✅ Done |
+| Memory Protocol templates (SOUL.md, DAILY.md, etc.) | ✅ Done |
+| Dogfooding: OpenClaw test (2026-05-01) | ✅ Done |
+| Dogfooding: KiloClaw test (2026-05-01) | ✅ Done |
+| Skill Discovery Protocol (agent-facing) | ⬜ Planned |
+
+---
+
+## Phase 3.6: Skill Ecosystem ── Skill 生態系 ✅
+
+**Goal 目標**: Enable Skills to reference each other through wikilinks, build a knowledge graph, and provide RAG-based discovery tools.
+
+讓 Skill 透過 wikilinks 互相引用、建立知識圖譜、提供 RAG 檢索工具。
+
+| Item 項目 | Status 狀態 |
+|---|---|
+| Wikilinks (`[[skill-name]]`) in all SKILL.md files | ✅ Done |
+| skill-index.py upgraded (frontmatter + wikilink scanning) | ✅ Done |
+| skill-rag.py (keyword search → prompt-ready context) | ✅ Done |
+| CONTRIBUTING.md updated with wikilinks guide | ✅ Done |
+| Auto-generated skill-index.md with relationship graph | ✅ Done |
+| Cross-Skill references (28+ wikilinks across 9 Skills) | ✅ Done |
+| Community Skill submissions via Fork + PR | ⬜ Planned |
+| Skill versioning and compatibility | ⬜ Planned |
+| Visual knowledge graph (interactive) | ⬜ Planned |
+
+---
+
 ## Phase 4: Community & Growth ── 社群與成長
 
 **Goal 目標**: Build community momentum and expand the framework.
