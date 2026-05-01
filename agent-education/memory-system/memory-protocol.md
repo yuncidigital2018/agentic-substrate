@@ -152,6 +152,18 @@ steps:
     tokens: ~300-500
     required: true
 
+  1b_protect_identity:
+    rule: |
+      SOUL.md is PERMANENT identity. NEVER overwrite it for a task.
+      If the task needs a specific role, write it in DAILY.md "Current Task Context."
+      Example: Task needs "Technical Writer" role → write in DAILY.md, NOT SOUL.md.
+
+      SOUL.md 是永久身份。不要因為任務而覆寫。
+      如果任務需要特定角色，寫在 DAILY.md 的「Current Task Context」。
+    check: |
+      Before writing any file, ask: "Is this SOUL.md?" If yes, stop. Write to DAILY.md instead.
+      在寫入任何檔案前問：「這是 SOUL.md 嗎？」如果是，停手。改寫 DAILY.md。
+
   2_read_state:
     file: DAILY.md
     purpose: |
@@ -225,6 +237,11 @@ steps:
       - Key decisions made
       - Files changed
       - Unresolved issues
+    validation: |
+      The session log must be a FILE, not just a chat message.
+      Path: memory/sessions/YYYY-MM-DD-topic.md (e.g., 2026-05-02-blog-post.md)
+
+      工作紀錄必須是一個檔案，不能只是聊天訊息。
 
   3_write_decision:
     file: memory/decisions/NNN-topic.md
@@ -235,6 +252,14 @@ steps:
       - Decision made
       - Rationale
       - Status (decided / revisiting / superseded)
+    validation: |
+      CRITICAL: If you described a decision in chat, you MUST also write it to a file.
+      The file path must be: memory/decisions/NNN-topic.md (e.g., 001-title-selection.md)
+      Use the write_file tool to create the file. Do NOT just mention it in chat.
+
+      關鍵：如果你在對話中描述了決策，就必須同時寫入檔案。
+      檔案路徑必須是：memory/decisions/NNN-topic.md
+      使用 write_file 工具建立檔案。不要只在對話中提及。
 
   4_write_fact:
     file: memory/facts/category.md
