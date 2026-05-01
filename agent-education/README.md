@@ -33,9 +33,17 @@ If you are an AI agent reading this repository, read these files first:
    - Convert repeated workflows into reusable Skills.
    - 把重複工作流程轉成可重複使用的 Skill。
 
-3. [Tool Result Validation](tool-use/tool-result-validation.md)
+3. [Pattern Matrix](decision-patterns/pattern-matrix.md)
+   - Select an execution pattern for complex tasks.
+   - 為複雜任務選擇合適的執行模式。
+
+4. [Tool Result Validation](tool-use/tool-result-validation.md)
    - Validate tool outputs, separate observation from inference, and mark risks.
    - 驗證工具輸出，區分觀察與推論，標示風險。
+
+5. [Evolution Self-Assessment](evolution-path/self-assessment.md)
+   - Assess current capability level and identify the next improvement target.
+   - 評估目前能力階段，找出下一個改進目標。
 
 ---
 
@@ -50,8 +58,10 @@ current_layer:
 task_mode:
 required_capabilities:
 existing_skill_to_reuse:
+recommended_pattern:
 tool_use_required:
 validation_required:
+evolution_level:
 persistence_candidate:
 next_action:
 ```
@@ -69,20 +79,23 @@ This state should guide action, not become user-facing noise. Surface it only wh
 | [Five-Layer Model](../docs/01-foundations/five-layer-model.md) | [Five-Layer Self-Model](self-model/five-layer-self-model.md) |
 | [Skill Anatomy](../docs/01-foundations/skill-anatomy.md) | [Skill Creation Protocol](skill-system/skill-creation-protocol.md) |
 | [Memory and State](../docs/02-architecture/memory-and-state.md) | Persistence decision: what should be remembered, reused, or discarded |
-| [Agentic Design Patterns](../docs/02-architecture/agentic-design-patterns.md) | Future protocols for routing, parallelization, orchestration, and critique |
+| [Agentic Design Patterns](../docs/02-architecture/agentic-design-patterns.md) | [Pattern Matrix](decision-patterns/pattern-matrix.md) — routing protocol for agent decision-making |
+| [Learning Path](../docs/04-curriculum/learning-path.md) | [Evolution Self-Assessment](evolution-path/self-assessment.md) — agent self-evaluation and progression |
 
 ---
 
 ## MVP Scope - MVP 範圍
 
-This first version defines only the minimum viable agent education layer:
+This version defines the agent education layer:
 
-這個第一版只定義最小可行的 Agent 教育層：
+這個版本定義 Agent 教育層：
 
 - Self-location in the five-layer model
 - Skill creation from repeatable workflows
+- Decision pattern selection for task architecture
 - Tool-result validation and risk labeling
+- Evolution self-assessment and progression guidance
 
-Future versions can add memory protocols, cross-agent Skill exchange, orchestration patterns, and automated Skill schema checks.
+Future versions can add memory protocols, cross-agent Skill exchange standards, orchestration automation, and Skill schema validation tools.
 
-未來可以再加入記憶協議、跨 Agent Skill 交換、調度模式，以及 Skill 格式自動檢查。
+未來可以再加入記憶協議、跨 Agent Skill 交換標準、調度自動化，以及 Skill 格式自動檢查工具。

@@ -164,6 +164,8 @@ Agentic-Substrate/
 |-- AGENTS.md                          [published] Guidance for coding agents
 |-- agent-education/                   [published] Agent-facing operational protocols
 |   |-- README.md                      [published] Agent-readable entry point
+|   |-- decision-patterns/             [published] Pattern selection matrix
+|   |-- evolution-path/                [published] Agent self-assessment protocol
 |   |-- self-model/                    [published] Five-layer self-location protocol
 |   |-- skill-system/                  [published] Skill creation protocol
 |   `-- tool-use/                      [published] Tool result validation protocol

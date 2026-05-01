@@ -32,6 +32,7 @@ Before non-trivial work, identify:
 
 - Which layer you are operating in: LLM computation, tool/protocol, Skill, Agent, or interface.
 - Whether an existing Skill should be reused.
+- Which decision pattern fits the task: prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer, reflection, planning, or multi-agent.
 - Whether tool use is required.
 - What validation level is needed.
 - Whether the workflow should become reusable documentation, memory, or a Skill.
