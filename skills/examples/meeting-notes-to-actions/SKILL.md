@@ -174,4 +174,9 @@ This Skill takes raw meeting notes (in any format — typed, voice transcription
 
 ---
 
+## Related
+
+- [[skill-builder]] — Create new Skills using the guided Skill Builder process
+- [[project-status-tracker]] — Action items feed into project tracking
+
 *Part of the [Agentic Substrate](../../../README.md) Example Skills Gallery.*

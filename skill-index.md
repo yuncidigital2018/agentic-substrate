@@ -1,8 +1,8 @@
 # Skill Index
 ### Agent 可查詢的 Skill 地圖
 
-> Auto-generated on 2026-05-02 00:47
-> 於 2026-05-02 00:47 自動產生
+> Auto-generated on 2026-05-02 01:27
+> 於 2026-05-02 01:27 自動產生
 >
 > Do not edit manually. Run `python3 scripts/skill-index.py` to regenerate.
 > 不要手動編輯。執行 `python3 scripts/skill-index.py` 重新產生。
@@ -12,7 +12,7 @@
 ## Summary 摘要
 
 - **Total Skills**: 9
-- **Relationships**: 0 bidirectional
+- **Relationships**: 15 bidirectional
 
 ## Quick Lookup 快速查找
 
@@ -38,6 +38,7 @@
 - **Type**: Transform
 - **Domain**: Productivity / Knowledge Management
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `skill-self-discovery`
 
 ### accounting-reconciler
 
@@ -47,6 +48,7 @@
 - **Type**: Transform
 - **Domain**: Accounting / Finance
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `document-reviewer`
 
 ### content-pipeline
 
@@ -56,6 +58,7 @@
 - **Type**: Process
 - **Domain**: Marketing / Content
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `research-and-summarize`, `document-reviewer`
 
 ### document-reviewer
 
@@ -65,6 +68,7 @@
 - **Type**: Process
 - **Domain**: Administration / Quality
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `content-pipeline`
 
 ### meeting-notes-to-actions
 
@@ -74,6 +78,7 @@
 - **Type**: Transform
 - **Domain**: General / Productivity
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `project-status-tracker`
 
 ### project-status-tracker
 
@@ -83,6 +88,7 @@
 - **Type**: Orchestration
 - **Domain**: Project Management
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `meeting-notes-to-actions`, `document-reviewer`
 
 ### research-and-summarize
 
@@ -92,6 +98,7 @@
 - **Type**: Process
 - **Domain**: Research / Analysis
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `content-pipeline`, `document-reviewer`
 
 ### skill-builder
 
@@ -101,6 +108,7 @@
 - **Type**: Process
 - **Domain**: Skill Creation
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-self-discovery`, `conversation-to-skill`
 
 ### skill-self-discovery
 
@@ -110,14 +118,56 @@
 - **Type**: Process
 - **Domain**: Learning / Onboarding
 - **Version**: 0.2.0
+- **Body Wikilinks**: `skill-builder`, `conversation-to-skill`
 
 ---
 
 ## Skill Relationship Graph
 ### Skill 關聯圖
 
-No relationships detected between Skills.
-尚未偵測到 Skill 之間的關聯。
+### Cluster 1
+```
+  accounting-reconciler
+    └──> document-reviewer
+    └──> skill-builder
+  content-pipeline
+    └──> document-reviewer
+    └──> research-and-summarize
+    └──> skill-builder
+  conversation-to-skill
+    └──> skill-builder
+    └──> skill-self-discovery
+  document-reviewer
+    └──> accounting-reconciler
+    └──> content-pipeline
+    └──> project-status-tracker
+    └──> research-and-summarize
+    └──> skill-builder
+  meeting-notes-to-actions
+    └──> project-status-tracker
+    └──> skill-builder
+  project-status-tracker
+    └──> document-reviewer
+    └──> meeting-notes-to-actions
+    └──> skill-builder
+  research-and-summarize
+    └──> content-pipeline
+    └──> document-reviewer
+    └──> skill-builder
+  skill-builder
+    └──> accounting-reconciler
+    └──> content-pipeline
+    └──> conversation-to-skill
+    └──> document-reviewer
+    └──> meeting-notes-to-actions
+    └──> project-status-tracker
+    └──> research-and-summarize
+    └──> skill-self-discovery
+  skill-self-discovery
+    └──> conversation-to-skill
+    └──> skill-builder
+```
+
 ---
 
 ## Agent Query Protocol - Agent 查詢協議

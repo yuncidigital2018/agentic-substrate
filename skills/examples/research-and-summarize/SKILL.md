@@ -180,4 +180,10 @@ This Skill structures the research process and produces a summary that's not jus
 
 ---
 
+## Related
+
+- [[skill-builder]] — Create new Skills using the guided Skill Builder process
+- [[content-pipeline]] — Research feeds into the content creation pipeline
+- [[document-reviewer]] — Review research summaries before delivery
+
 *Part of the [Agentic Substrate](../../../README.md) Example Skills Gallery.*

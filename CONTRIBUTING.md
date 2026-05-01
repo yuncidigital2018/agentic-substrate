@@ -118,7 +118,34 @@ Every Skill should address all seven components from [Skill Anatomy](docs/01-fou
 6. **Knowledge** — Domain-specific expertise
 7. **Composition Hooks** — What connects upstream/downstream
 
-### Step 3: Quality Checklist 品質清單
+### Step 3: Add Wikilinks 加入 Wikilinks
+
+Use Obsidian-style wikilinks to connect your Skill to related Skills. This enables automatic knowledge graph generation and helps agents discover related capabilities.
+
+使用 Obsidian 風格的 wikilinks 來連接你的 Skill 與相關 Skill。這能自動產生知識圖譜，幫助 Agent 發現相關能力。
+
+**In the body text**, reference other Skills with `[[skill-name]]`:
+
+```markdown
+This workflow pairs well with [[document-reviewer]] for quality assurance.
+For the initial content gathering, see [[research-and-summarize]].
+```
+
+**In the Related Skills section** at the bottom:
+
+```markdown
+## Related Skills
+- [[skill-builder]] — Use this to create new Skills from scratch
+- [[document-reviewer]] — Quality assurance for document outputs
+```
+
+**Rules:**
+- Use lowercase with hyphens: `[[my-skill-name]]` (matches the directory name)
+- Add wikilinks the first time you mention another Skill in the body
+- Always include a `## Related Skills` section at the bottom
+- Wikilinks are **in addition to** markdown links — keep both formats
+
+### Step 4: Quality Checklist 品質清單
 
 Before submitting, verify:
 

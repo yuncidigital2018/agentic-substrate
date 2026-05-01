@@ -206,4 +206,9 @@ This Skill handles the systematic comparison, flags discrepancies, categorizes t
 
 ---
 
+## Related
+
+- [[skill-builder]] — Create new Skills using the guided Skill Builder process
+- [[document-reviewer]] — Review the reconciliation report before filing
+
 *Part of the [Agentic Substrate](../../../README.md) Example Skills Gallery.*

@@ -14,3 +14,4 @@ node_modules/
 
 # Build artifacts
 *.log
+scripts/__pycache__/

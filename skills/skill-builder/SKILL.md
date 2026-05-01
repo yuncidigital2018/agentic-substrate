@@ -31,9 +31,9 @@ metadata:
 
 ## Description 描述
 
-Skill Self-Discovery helps people realize they *already have* Skills. Conversation-to-Skill helps people *extract* Skills from messy chats. **Skill Builder is the next step** — it helps people *deliberately construct* a new Skill from scratch, with guided questions, structured templates, and immediate testing.
+Skill Self-Discovery ([[skill-self-discovery]]) helps people realize they *already have* Skills. Conversation-to-Skill ([[conversation-to-skill]]) helps people *extract* Skills from messy chats. **Skill Builder is the next step** — it helps people *deliberately construct* a new Skill from scratch, with guided questions, structured templates, and immediate testing.
 
-Skill Self-Discovery 幫助人們意識到他們*已經擁有* Skills。Conversation-to-Skill 幫助人們從混亂的對話中*提取* Skills。**Skill Builder 是下一步**——它幫助人們*刻意建構*一個全新的 Skill，透過引導式提問、結構化模板和即時測試。
+[[skill-self-discovery]] 幫助人們意識到他們*已經擁有* Skills。[[conversation-to-skill]] 幫助人們從混亂的對話中*提取* Skills。**Skill Builder 是下一步**——它幫助人們*刻意建構*一個全新的 Skill，透過引導式提問、結構化模板和即時測試。
 
 Think of the three Skills as a learning progression:
 
@@ -653,7 +653,7 @@ The key to this Skill's effectiveness is adapting language to the user's domain.
 - Validation includes: tests pass、code review approved、no regressions
 - Knowledge includes: codebase conventions、infra quirks、performance thresholds
 
-### How This Differs from skill-self-discovery 與 skill-self-discovery 的差異
+### How This Differs from [[skill-self-discovery]] 與 skill-self-discovery 的差異
 
 | Aspect 面向 | skill-self-discovery | skill-builder |
 |---|---|---|
@@ -663,7 +663,7 @@ The key to this Skill's effectiveness is adapting language to the user's domain.
 | **Output 輸出** | Recognition + optional rough SKILL.md 認知 + 可選的粗略 SKILL.md | Polished, tested, installable SKILL.md 打磨過、測試過、可安裝的 SKILL.md |
 | **Tone 語調** | Warm, surprising, pedagogical 溫暖、驚喜、教學性 | Collaborative, professional, thorough 協作、專業、徹底 |
 
-### How This Differs from conversation-to-skill 與 conversation-to-skill 的差異
+### How This Differs from [[conversation-to-skill]] 與 conversation-to-skill 的差異
 
 | Aspect 面向 | conversation-to-skill | skill-builder |
 |---|---|---|
@@ -799,6 +799,11 @@ AI:  ✅ Saved to monthly-progress-report/SKILL.md
 ```
 
 ---
+
+## Related Skills
+
+- [[skill-self-discovery]] — Guided discovery that reveals users already possess every component needed to build a Skill
+- [[conversation-to-skill]] — Extract a reusable Skill from a messy LLM conversation
 
 *Part of the [Agentic Substrate](../../README.md) framework.*
 *See also: [Skill Self-Discovery](../skill-self-discovery/SKILL.md) · [Conversation to Skill](../conversation-to-skill/SKILL.md) · [Skill Anatomy](../../docs/01-foundations/skill-anatomy.md)*

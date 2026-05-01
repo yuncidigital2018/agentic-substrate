@@ -230,4 +230,10 @@ This Skill manages the entire content pipeline from idea to publication, adaptin
 
 ---
 
+## Related
+
+- [[skill-builder]] — Create new Skills using the guided Skill Builder process
+- [[research-and-summarize]] — Deep topic research feeds into content creation
+- [[document-reviewer]] — Review stage in the content pipeline
+
 *Part of the [Agentic Substrate](../../../README.md) Example Skills Gallery.*

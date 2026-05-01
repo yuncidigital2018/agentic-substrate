@@ -195,4 +195,9 @@ The Skill adapts its review criteria based on document type — a legal contract
 
 ---
 
+## Related
+
+- [[skill-builder]] — Create new Skills using the guided Skill Builder process
+- [[content-pipeline]] — Content creation workflow where review is a key stage
+
 *Part of the [Agentic Substrate](../../../README.md) Example Skills Gallery.*

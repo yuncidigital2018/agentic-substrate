@@ -215,7 +215,7 @@ that you can use in any future session?"
 
 ### Phase 4: Convert (Optional) 轉換（可選）
 
-If the user says yes, convert the work record into a proper SKILL.md using the seven-component format from [Skill Anatomy](../../docs/01-foundations/skill-anatomy.md):
+If the user says yes, convert the work record into a proper SKILL.md using the seven-component format from [Skill Anatomy](../../docs/01-foundations/skill-anatomy.md). For more advanced construction, see [[skill-builder]]:
 
 如果使用者同意，使用[技能解剖學](../../docs/01-foundations/skill-anatomy.md)的七組件格式將工作紀錄轉換為正式的 SKILL.md：
 
@@ -289,7 +289,7 @@ Skill 執行成功的條件：
 1. **Extraction is complete**: All six elements (Task, Decisions, Process, State, Outputs, Preferences) are captured from the conversation. None are fabricated. 六個要素全部從對話中捕捉，沒有捏造。
 2. **User's words are preserved**: The work record uses the user's vocabulary, not technical jargon. 工作紀錄使用使用者的詞彙，不用技術術語。
 3. **User confirms accuracy**: The user agrees the work record reflects what actually happened. 使用者同意工作紀錄反映了實際發生的事。
-4. **The reveal lands**: The user has an "aha" moment — they see the connection between their work record and a Skill. 使用者有「啊哈」的時刻——看到工作紀錄和 Skill 之間的連結。
+4. **The reveal lands**: The user has an "aha" moment — they see the connection between their work record and a Skill ([[skill-self-discovery]] teaches this same pattern). 使用者有「啊哈」的時刻——看到工作紀錄和 Skill 之間的連結。
 5. **If converted**: The SKILL.md follows the seven-component format and is immediately usable. 如果轉換了，SKILL.md 遵循七組件格式且可立即使用。
 
 ---
@@ -403,5 +403,10 @@ budget utilization, KPI achievement, and next quarter plan.
 ```
 
 ---
+
+## Related Skills
+
+- [[skill-self-discovery]] — Guided discovery that reveals users already possess every component needed to build a Skill
+- [[skill-builder]] — Deliberately construct a production-quality SKILL.md from scratch with guided questions
 
 *Related: [Skill Self-Discovery](../skill-self-discovery/SKILL.md) · [You Already Know](../../docs/04-curriculum/you-already-know.md) · [Learning Path](../../docs/04-curriculum/learning-path.md)*

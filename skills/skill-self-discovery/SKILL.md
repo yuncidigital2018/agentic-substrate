@@ -316,9 +316,9 @@ The barrier for non-technical professionals is not capability but **vocabulary a
 
 ## Composition Hooks 組合接口
 
-- **Output → skill-builder**: After self-discovery, users who want a production-quality Skill can use the [Skill Builder](../skill-builder/) for refinement
+- **Output → [[skill-builder]]**: After self-discovery, users who want a production-quality Skill can use the [Skill Builder](../skill-builder/) for refinement
   自我發現後，想要產品品質 Skill 的使用者可以使用 Skill Builder 進行精煉
-- **Output → conversation-to-skill**: If the user has existing chat histories they want to organize, connect to [Conversation to Skill](../conversation-to-skill/)
+- **Output → [[conversation-to-skill]]**: If the user has existing chat histories they want to organize, connect to [Conversation to Skill](../conversation-to-skill/)
   如果使用者有想整理的現有聊天記錄，連接到 Conversation to Skill
 - **Input ← docs/04-curriculum**: The learning path documents reference this Skill as a hands-on exercise
   學習路徑文件引用這個 Skill 作為動手練習
@@ -426,6 +426,11 @@ AI:  Now let me show you something interesting.
 ```
 
 ---
+
+## Related Skills
+
+- [[conversation-to-skill]] — Extract a reusable Skill from a messy LLM conversation
+- [[skill-builder]] — Deliberately construct a production-quality SKILL.md from scratch with guided questions
 
 *Part of the [Agentic Substrate](../../README.md) framework.*
 *Learn more: [You Already Know How to Build a Skill](../../docs/04-curriculum/you-already-know.md)*

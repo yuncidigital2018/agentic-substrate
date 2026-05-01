@@ -4,9 +4,11 @@ Skill Index Generator
 Skill 索引產生器
 
 Scans all SKILL.md files in a repository, extracts YAML frontmatter metadata,
-and generates a skill-index.md with relationships and a text-based graph.
+scans markdown body for [[wikilink]] references, and generates a skill-index.md
+with relationships and a text-based graph.
 
 掃描 repo 中所有 SKILL.md 檔案，提取 YAML frontmatter 元資料，
+掃描 markdown 內文中的 [[wikilink]] 引用，
 並產生包含關聯和文字圖的 skill-index.md。
 
 Usage:
@@ -77,6 +79,24 @@ def extract_description(content: str) -> str:
     return ''
 
 
+def extract_wikilinks(content: str) -> list:
+    """Extract [[wikilink]] references from markdown body text.
+
+    Supports [[target]], [[target#anchor]], and [[target|display text]] formats.
+    Returns the target part (before | or #) for each wikilink.
+    """
+    # Match [[target]] or [[target#anchor]] or [[target|display text]] or [[target#anchor|display]]
+    matches = re.findall(r'\[\[([^\]|]+?)(?:#[^\]]*?)?(?:\|[^\]]+?)?\]\]', content)
+    seen = set()
+    result = []
+    for m in matches:
+        m = m.strip()
+        if m not in seen:
+            seen.add(m)
+            result.append(m)
+    return result
+
+
 def find_skills(repo_root: Path) -> list:
     """Find all SKILL.md files and extract their metadata."""
     skills = []
@@ -96,6 +116,13 @@ def find_skills(repo_root: Path) -> list:
         metadata = parse_frontmatter(content)
         relative_path = skill_path.relative_to(repo_root)
         skill_dir = relative_path.parent
+
+        # Extract body content (everything after frontmatter)
+        fm_match = re.match(r'^---\s*\n.*?\n---\s*\n', content, re.DOTALL)
+        body_content = content[fm_match.end():] if fm_match else content
+
+        # Extract wikilinks from body content
+        body_wikilinks = extract_wikilinks(body_content)
 
         # Extract relationships from metadata
         related = metadata.get('metadata', {})
@@ -119,6 +146,7 @@ def find_skills(repo_root: Path) -> list:
             'related_skills': [s.strip() for s in related_skills.split(',') if s.strip()] if related_skills else [],
             'depends_on': [s.strip() for s in depends_on.split(',') if s.strip()] if depends_on else [],
             'reuses': [s.strip() for s in reuses.split(',') if s.strip()] if reuses else [],
+            'body_wikilinks': body_wikilinks,
         }
         skills.append(skill_info)
 
@@ -142,6 +170,10 @@ def build_relationship_graph(skills: list) -> dict:
             if reuse in skill_names:
                 graph[skill['name']].add(reuse)
                 graph[reuse].add(skill['name'])
+        for wikilink in skill.get('body_wikilinks', []):
+            if wikilink in skill_names:
+                graph[skill['name']].add(wikilink)
+                graph[wikilink].add(skill['name'])
 
     return graph
 
@@ -260,6 +292,8 @@ def generate_index(skills: list, graph: dict) -> str:
             lines.append(f'- **Depends on**: {", ".join("`" + s + "`" for s in skill["depends_on"])}')
         if skill['reuses']:
             lines.append(f'- **Reuses**: {", ".join("`" + s + "`" for s in skill["reuses"])}')
+        if skill.get('body_wikilinks'):
+            lines.append(f'- **Body Wikilinks**: {", ".join("`" + s + "`" for s in skill["body_wikilinks"])}')
         lines.append('')
 
     # Relationship graph

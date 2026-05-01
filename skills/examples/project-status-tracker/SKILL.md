@@ -200,4 +200,10 @@ Projects that are green on the outside (reported as on-track) but red on the ins
 
 ---
 
+## Related
+
+- [[skill-builder]] — Create new Skills using the guided Skill Builder process
+- [[meeting-notes-to-actions]] — Action items from meetings feed into project tracking
+- [[document-reviewer]] — Review status reports before sending
+
 *Part of the [Agentic Substrate](../../../README.md) Example Skills Gallery.*
