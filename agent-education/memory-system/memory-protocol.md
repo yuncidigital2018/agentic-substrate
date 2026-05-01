@@ -177,7 +177,17 @@ steps:
       - "Task is new, no prior context → skip this step"
     tokens: ~200-2000
 
-total_startup_tokens: ~700-1100 (without task-specific reads)
+  5_check_capabilities:
+    file: skill-index.md
+    purpose: |
+      Discover existing Skills before executing. Many agents skip this step and
+      reinvent workflows that already have a Skill. Read the quick lookup table
+      to see if a matching Skill exists.
+    tokens: ~200
+    required: false
+    recommended: true
+
+total_startup_tokens: ~700-1300 (without task-specific reads)
 ```
 
 **Key rule: Read the minimum needed to act correctly.** Do not load everything. The routing table (step 3) tells you where to find deeper context — only go deeper when the task demands it.
@@ -199,8 +209,12 @@ steps:
       - What was completed (✅)
       - What is in progress (🔄)
       - What is blocked (🚫)
-      - Next actions
+      - Next actions (REQUIRED — what should the next session start with?)
       - Updated timestamp
+    validation: |
+      DAILY.md MUST include a "Next Actions" section.
+      Without it, the next session has no starting point — the agent wastes time re-analyzing context.
+      Write at least one concrete next step, even if it's "Await user instructions."
 
   2_write_session_log:
     file: memory/sessions/YYYY-MM-DD-topic.md
@@ -434,6 +448,7 @@ If your existing memory system and this protocol disagree:
 | Premature RAG 過早 RAG | Complex indexing for <50 files | Use grep + index until scale demands more |
 | Partial initialization 部分初始化 | Agent creates some directories but not all, then can't write | Run First-Run Initialization to create ALL directories at once |
 | Duplicate memory files 重複記憶檔案 | Agent creates new SOUL.md when one already exists | Check for existing files before creating; integrate, don't duplicate |
+| Vague next actions 模糊的下一步 | DAILY.md says "awaiting instructions" or "nothing planned" | Write at least one concrete next step, even if it's "Review session log for improvement areas" |
 
 ---
 
@@ -493,6 +508,45 @@ This section is updated as agents test this protocol in real scenarios.
 - Added "Integration with Existing Memory Systems" section with three scenarios
 - Added "Partial initialization" and "Duplicate memory files" anti-patterns
 - Improved Session Start Protocol with clearer step ordering and purpose descriptions
+
+### KiloClaw Test (2026-05-01)
+
+**Agent**: KiloClaw (Discord-based agent, separate instance from OpenClaw)
+**Scenario**: First-time reading of the Agentic Substrate repo, after protocol was updated with OpenClaw lessons
+
+**What worked:**
+- Read ALL 6 protocols (not just Memory Protocol) — full agent-education stack
+- Executed complete lifecycle: Session Start → Self-Location → Pattern Selection → Task Execution → Session End
+- Self-located at L4 (Agent) using Five-Layer Self-Model
+- Selected execution pattern: Prompt Chaining + Tool Validation
+- Created ALL directories on first run (decisions/, sessions/, facts/, templates/) — the "First-Run Initialization" fix worked
+- Wrote 5 memory files: DAILY.md, memory-index.md, decision record, session log, fact file
+- Successfully committed to Git (no index.lock issue)
+- Distinguished between memory types correctly (decision vs fact vs session log)
+
+**What needed improvement:**
+- DAILY.md "Next Actions" was vague ("awaiting instructions") — should be more concrete
+- Could have used the skill-index.md to discover existing Skills before executing
+
+**Changes made based on this test:**
+- Strengthened "Next Actions" requirement in Session End Protocol with validation rule
+- Added comparison table to show how protocol compliance varies between agents
+
+### Comparative Analysis 比較分析
+
+| Metric 指標 | OpenClaw | KiloClaw | Implication 意涵 |
+|---|---|---|---|
+| Protocols read 協議讀取數 | 2/6 | 6/6 | More protocols read → richer behavior |
+| Directories created 目錄建立 | 1/4 | 4/4 | First-Run Initialization fix works |
+| Memory types used 記憶類型使用 | 2 (state, session) | 5 (state, session, decision, fact, index) | Protocol teaches type distinction |
+| Self-location 自我定位 | ❌ | ✅ L4 | Self-Model protocol enables this |
+| Pattern selection 模式選擇 | ❌ | ✅ Prompt Chaining | Pattern Matrix protocol enables this |
+| Git commit 成功 | ❌ | ✅ | Workspace-dependent |
+| Read skill-index.md | ❌ | ❌ | Both missed this — needs stronger signal |
+
+**Key insight**: The number of protocols an agent reads directly correlates with the quality of its behavior. An agent that reads only Memory Protocol will write memory. An agent that reads all 6 protocols will **think like an agent** — self-locate, select patterns, validate outputs, and write structured memory.
+
+**關鍵洞見**：Agent 讀取的協議數量直接影響它的行為品質。只讀 Memory Protocol 的 Agent 會寫記憶。讀完全部 6 個協議的 Agent 會**像 Agent 一樣思考**——自我定位、選擇模式、驗證輸出、寫結構化記憶。
 
 ---
 
