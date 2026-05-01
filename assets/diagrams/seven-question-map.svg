@@ -1,0 +1,70 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="28" fill="#F7FAF8"/>
+  <text x="74" y="82" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="40" font-weight="800">七問萃取地圖</text>
+  <text x="74" y="122" fill="#60706B" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="21">把腦中的工作經驗，整理成 AI 可以跟著走的路線。</text>
+
+  <g transform="translate(74 178)">
+    <rect x="0" y="0" width="310" height="370" rx="20" fill="#FFFFFF" stroke="#D8E4DF" stroke-width="2"/>
+    <rect x="0" y="0" width="310" height="64" rx="20" fill="#E8F6F1"/>
+    <text x="28" y="42" fill="#0F8F73" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="24" font-weight="800">A. 先定義任務</text>
+    <circle cx="52" cy="120" r="26" fill="#0F8F73"/>
+    <text x="52" y="128" text-anchor="middle" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">1</text>
+    <text x="92" y="116" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">這件事是什麼？</text>
+    <text x="92" y="148" fill="#60706B" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="17">一句話說清楚任務。</text>
+
+    <circle cx="52" cy="220" r="26" fill="#0F8F73"/>
+    <text x="52" y="228" text-anchor="middle" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">2</text>
+    <text x="92" y="216" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">什麼時候開始？</text>
+    <text x="92" y="248" fill="#60706B" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="17">找到觸發條件。</text>
+
+    <circle cx="52" cy="320" r="26" fill="#0F8F73"/>
+    <text x="52" y="328" text-anchor="middle" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">3</text>
+    <text x="92" y="316" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">需要哪些輸入？</text>
+    <text x="92" y="348" fill="#60706B" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="17">列出資料、格式與範例。</text>
+  </g>
+
+  <path d="M406 362 H478" stroke="#0F8F73" stroke-width="5" stroke-linecap="round"/>
+  <path d="M460 346 L482 362 L460 378" stroke="#0F8F73" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(506 178)">
+    <rect x="0" y="0" width="280" height="370" rx="20" fill="#FFFFFF" stroke="#D8E4DF" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="64" rx="20" fill="#FFF5DF"/>
+    <text x="28" y="42" fill="#D9911F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="24" font-weight="800">B. 再設計流程</text>
+    <circle cx="52" cy="146" r="30" fill="#D9911F"/>
+    <text x="52" y="155" text-anchor="middle" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="24" font-weight="800">4</text>
+    <text x="96" y="138" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="24" font-weight="800">步驟是什麼？</text>
+    <text x="96" y="172" fill="#60706B" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="17">把做法一格一格排出來。</text>
+
+    <rect x="42" y="230" width="196" height="76" rx="14" fill="#FFF8E8" stroke="#F0D9A6"/>
+    <text x="64" y="260" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="18" font-weight="800">不用完美</text>
+    <text x="64" y="288" fill="#60706B" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="16">先寫出順序，再修。</text>
+  </g>
+
+  <path d="M810 362 H882" stroke="#0F8F73" stroke-width="5" stroke-linecap="round"/>
+  <path d="M864 346 L886 362 L864 378" stroke="#0F8F73" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(910 178)">
+    <rect x="0" y="0" width="216" height="370" rx="20" fill="#10201C" stroke="#1AA38B" stroke-width="2"/>
+    <text x="24" y="42" fill="#92F2DD" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="23" font-weight="800">C. 建立品質迴圈</text>
+    <circle cx="46" cy="112" r="24" fill="#92F2DD"/>
+    <text x="46" y="120" text-anchor="middle" fill="#10201C" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="21" font-weight="800">5</text>
+    <text x="82" y="108" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="20" font-weight="800">產出長什麼樣？</text>
+    <text x="82" y="136" fill="#B8D4CC" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="15">格式與欄位。</text>
+
+    <circle cx="46" cy="214" r="24" fill="#92F2DD"/>
+    <text x="46" y="222" text-anchor="middle" fill="#10201C" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="21" font-weight="800">6</text>
+    <text x="82" y="210" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="20" font-weight="800">怎麼檢查？</text>
+    <text x="82" y="238" fill="#B8D4CC" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="15">驗收標準。</text>
+
+    <circle cx="46" cy="316" r="24" fill="#92F2DD"/>
+    <text x="46" y="324" text-anchor="middle" fill="#10201C" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="21" font-weight="800">7</text>
+    <text x="82" y="312" fill="#FFFFFF" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="20" font-weight="800">接到哪裡？</text>
+    <text x="82" y="340" fill="#B8D4CC" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="15">上游與下游。</text>
+  </g>
+
+  <g transform="translate(156 630)">
+    <rect x="0" y="0" width="888" height="64" rx="18" fill="#FFFFFF" stroke="#D8E4DF"/>
+    <text x="30" y="40" fill="#0F8F73" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="800">講師提醒：</text>
+    <text x="142" y="40" fill="#14211F" font-family="Arial, 'Noto Sans TC', sans-serif" font-size="22" font-weight="700">七問不是考試，是把你平常已經會做的事，畫成一條路。</text>
+  </g>
+</svg>
